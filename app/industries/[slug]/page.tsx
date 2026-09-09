@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Breadcrumbs, CTASection, JsonLd, ListBlock, PageHero } from '@/components/site';
+import { Breadcrumbs, CTASection, JsonLd, ListBlock, PageHero, PageVisual } from '@/components/site';
 import { industries, industryBySlug, slugUrl } from '@/lib/content';
 
 export function generateStaticParams() {
@@ -19,7 +19,9 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
   return (
     <main>
       <Breadcrumbs items={[{ label: 'Industries' }, { label: industry.title }]} />
-      <PageHero eyebrow="Industry website development" title={industry.title} text={industry.summary} />
+      <PageHero eyebrow="Industry website development" title={industry.title} text={industry.summary}>
+        <PageVisual title="Industry flow" items={['Challenges', 'Sections', 'Leads', 'CTA']} />
+      </PageHero>
       <section className="section">
         <div className="container grid gap-6 lg:grid-cols-2">
           <ListBlock title="Industry-specific challenges" items={industry.challenges} />

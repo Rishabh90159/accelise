@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
-import { Breadcrumbs, CTASection, PageHero, ProjectCards } from '@/components/site';
+import { Breadcrumbs, CTASection, PageHero, PageVisual, ProjectCards } from '@/components/site';
 
-export const metadata: Metadata = { title: 'Portfolio', description: 'Selected website projects and concepts by RG Web Solutions with honest placeholder details where real information is unavailable.', alternates: { canonical: '/portfolio' } };
+export const metadata: Metadata = { title: 'Portfolio', description: 'Selected completed projects and demo concepts by RG Web Solutions with case studies, project type, technologies and work completed.', alternates: { canonical: '/portfolio' } };
 
 export default function PortfolioPage() {
   return (
     <main>
       <Breadcrumbs items={[{ label: 'Portfolio' }]} />
-      <PageHero eyebrow="Portfolio" title="Website projects and concept work" text="A practical portfolio view with project images, business problems, solutions, features, technology and case-study links." />
+      <PageHero eyebrow="Portfolio" title="Completed projects and demo website concepts" text="Review website work by industry, project type, challenge, solution, technology and case-study detail. Live links are shown only when a valid URL is available.">
+        <PageVisual title="Portfolio review" items={['Screenshot', 'Challenge', 'Work done', 'Case study']} />
+      </PageHero>
       <section className="section bg-white"><div className="container"><ProjectCards /></div></section>
       <CTASection title="Need a similar website?" />
     </main>

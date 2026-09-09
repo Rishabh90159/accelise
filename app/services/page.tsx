@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Breadcrumbs, ButtonLink, CTASection, JsonLd, ListBlock, PageHero, SectionHeading, ServiceCards } from '@/components/site';
+import { Breadcrumbs, ButtonLink, CTASection, JsonLd, ListBlock, PageHero, PageVisual, SectionHeading, ServiceCards } from '@/components/site';
 import { services, slugUrl } from '@/lib/content';
 
 export const metadata: Metadata = {
@@ -12,7 +12,9 @@ export default function ServicesPage() {
   return (
     <main>
       <Breadcrumbs items={[{ label: 'Services' }]} />
-      <PageHero eyebrow="Services" title="Website development services for business enquiries" text="Choose a focused website type, or use the consultation to clarify what your buyers need before deciding the final scope." />
+      <PageHero eyebrow="Services" title="Website development services for business enquiries" text="Choose a focused website type, or use the consultation to clarify what your buyers need before deciding the final scope.">
+        <PageVisual title="Service planning" items={['Business goal', 'Website type', 'Enquiry path', 'Scope']} />
+      </PageHero>
       <section className="section bg-white"><div className="container"><ServiceCards /></div></section>
       <section className="section">
         <div className="container grid gap-6 lg:grid-cols-2">

@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, ChevronRight, Mail, Menu, MessageCircle, Phone } from 'lucide-react';
-import { faqs, navItems, projects, services, siteConfig, whatsappUrl, consultationMessage, type FAQ } from '@/lib/content';
+import { faqs, navItems, projects, services, siteConfig, teamMembers, whatsappUrl, consultationMessage, type FAQ } from '@/lib/content';
 
 export function Header() {
   return (
     <>
       <div className="bg-[#0b1b3a] px-4 py-2 text-center text-sm font-medium text-white">
-        Led by Rishabh Gautam with specialist support engaged according to project needs.
+        Web-development team for business websites, catalogues and web applications.
       </div>
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/92 backdrop-blur">
         <nav className="container flex min-h-16 items-center justify-between gap-5">
@@ -15,10 +15,8 @@ export function Header() {
             <span className="grid h-10 w-10 place-items-center rounded-md bg-[#0b1b3a] text-white">RG</span>
             <span>{siteConfig.name}</span>
           </Link>
-          <div className="hidden items-center gap-6 text-sm font-semibold text-slate-700 lg:flex">
-            {navItems.map((item) => (
-              <Link className="link-underline" href={item.href} key={item.href}>{item.label}</Link>
-            ))}
+          <div className="hidden items-center gap-5 text-sm font-semibold text-slate-700 xl:flex">
+            {navItems.map((item) => <Link className="link-underline" href={item.href} key={item.href}>{item.label}</Link>)}
           </div>
           <div className="flex items-center gap-2">
             <a className="hidden rounded-md border border-slate-300 px-4 py-2 text-sm font-bold text-[#0b1b3a] transition hover:border-[#315eef] md:inline-flex" href={siteConfig.phoneHref} data-cta="header-call">
@@ -27,9 +25,14 @@ export function Header() {
             <a className="rounded-md bg-[#315eef] px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#244bd4]" href={whatsappUrl(consultationMessage('Website project'))} data-cta="header-whatsapp">
               <MessageCircle className="mr-2 inline h-4 w-4" /> WhatsApp
             </a>
-            <button className="rounded-md border border-slate-300 p-2 lg:hidden" aria-label="Menu">
-              <Menu className="h-5 w-5" />
-            </button>
+            <details className="group relative xl:hidden">
+              <summary className="list-none rounded-md border border-slate-300 p-2" aria-label="Open navigation menu">
+                <Menu className="h-5 w-5" />
+              </summary>
+              <div className="absolute right-0 top-12 grid w-60 gap-1 rounded-lg border border-slate-200 bg-white p-3 text-sm font-bold text-slate-700 shadow-xl">
+                {navItems.map((item) => <Link className="rounded-md px-3 py-2 hover:bg-slate-100" href={item.href} key={item.href}>{item.label}</Link>)}
+              </div>
+            </details>
           </div>
         </nav>
       </header>
@@ -40,16 +43,28 @@ export function Header() {
 export function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-[#071226] text-white">
-      <div className="container grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+      <div className="container grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
         <div>
           <p className="font-heading text-2xl font-extrabold">{siteConfig.name}</p>
-          <p className="mt-4 max-w-xl text-slate-300">{siteConfig.description}</p>
-          <p className="mt-4 text-sm text-slate-400">{siteConfig.founder}, {siteConfig.position}. {siteConfig.location}. Service area: {siteConfig.serviceArea}.</p>
+          <p className="mt-4 max-w-xl text-slate-300">RG Web Solutions helps businesses build credible, responsive and enquiry-focused websites.</p>
+          <p className="mt-4 text-sm text-slate-400">{siteConfig.location}. Service coverage: {siteConfig.serviceArea}.</p>
         </div>
         <div>
-          <p className="font-bold">Pages</p>
+          <p className="font-bold">Services</p>
           <div className="mt-4 grid gap-2 text-sm text-slate-300">
-            {navItems.map((item) => <Link href={item.href} key={item.href} className="hover:text-white">{item.label}</Link>)}
+            {services.slice(0, 5).map((service) => <Link href={`/services/${service.slug}`} key={service.slug} className="hover:text-white">{service.shortTitle}</Link>)}
+          </div>
+        </div>
+        <div>
+          <p className="font-bold">Company</p>
+          <div className="mt-4 grid gap-2 text-sm text-slate-300">
+            {[
+              ['About', '/about'],
+              ['Team', '/team'],
+              ['Process', '/process'],
+              ['Portfolio', '/portfolio'],
+              ['Blog', '/blog'],
+            ].map(([label, href]) => <Link href={href} key={href} className="hover:text-white">{label}</Link>)}
           </div>
         </div>
         <div>
@@ -57,7 +72,7 @@ export function Footer() {
           <div className="mt-4 grid gap-3 text-sm text-slate-300">
             <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
             <a href={siteConfig.emailHref}>{siteConfig.email}</a>
-            <a href={whatsappUrl(consultationMessage('Website enquiry'))}>WhatsApp enquiry</a>
+            <a href={whatsappUrl(consultationMessage('Website enquiry'))}>WhatsApp</a>
           </div>
         </div>
       </div>
@@ -121,7 +136,7 @@ export function PageHero({ eyebrow, title, text, children }: { eyebrow: string; 
             <ButtonLink href="/portfolio" variant="secondary" cta="hero-work">View Our Work</ButtonLink>
           </div>
         </div>
-        <div className="rounded-lg border border-slate-200 bg-white p-3 shadow-xl">{children ?? <AgencyVisual />}</div>
+        <div className="rounded-lg border border-slate-200 bg-white p-3 shadow-xl">{children ?? <PageVisual />}</div>
       </div>
     </section>
   );
@@ -131,17 +146,46 @@ export function AgencyVisual() {
   return (
     <div className="rounded-md bg-[#0b1b3a] p-5 text-white">
       <div className="flex items-center justify-between border-b border-white/15 pb-4">
-        <span className="text-sm font-bold">Enquiry-focused website plan</span>
-        <span className="rounded bg-white/10 px-2 py-1 text-xs">Static + fast</span>
+        <span className="text-sm font-bold">One team. Complete website delivery.</span>
+        <span className="rounded bg-white/10 px-2 py-1 text-xs">Team workflow</span>
       </div>
       <div className="mt-5 grid gap-3">
-        {['Credibility pages', 'Service or catalogue flow', 'WhatsApp and call CTAs', 'SEO metadata'].map((item, index) => (
+        {['Strategy and structure', 'UI and frontend development', 'Backend and integrations', 'Testing and launch support'].map((item, index) => (
           <div key={item} className="flex items-center gap-3 rounded-md bg-white/8 p-3">
             <span className="grid h-8 w-8 place-items-center rounded bg-[#315eef] text-sm font-bold">{index + 1}</span>
             <span className="text-sm">{item}</span>
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+export function PageVisual({ title = 'Complete delivery system', items = ['Discovery', 'Design and build', 'QA checks', 'Launch'] }: { title?: string; items?: string[] }) {
+  return (
+    <div className="rounded-md bg-slate-50 p-5">
+      <p className="font-bold text-[#0b1b3a]">{title}</p>
+      <div className="mt-5 grid grid-cols-2 gap-3">
+        {items.map((item, index) => <div className="rounded-md border border-slate-200 bg-white p-4 shadow-sm" key={item}><span className="text-sm font-extrabold text-[#315eef]">{String(index + 1).padStart(2, '0')}</span><p className="mt-2 text-sm font-bold text-[#0b1b3a]">{item}</p></div>)}
+      </div>
+    </div>
+  );
+}
+
+export function TeamPortrait({ initials }: { initials: string }) {
+  return <div className="grid h-16 w-16 place-items-center rounded-lg bg-[#0b1b3a] font-heading text-xl font-extrabold text-white shadow-sm">{initials}</div>;
+}
+
+export function TeamPreview() {
+  return (
+    <div className="grid gap-4 md:grid-cols-4">
+      {teamMembers.map((member) => (
+        <Link href="/team" className="rounded-lg border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg" key={member.name}>
+          <div className="mx-auto w-fit"><TeamPortrait initials={member.initials} /></div>
+          <h3 className="mt-4 font-extrabold text-[#0b1b3a]">{member.name}</h3>
+          <p className="mt-1 text-sm text-slate-600">{member.role}</p>
+        </Link>
+      ))}
     </div>
   );
 }
@@ -180,7 +224,7 @@ export function FAQSection({ items = faqs }: { items?: FAQ[] }) {
   );
 }
 
-export function CTASection({ title = 'Ready to discuss your website?', text = 'Share your business, goals and required pages. You will get a practical direction before any quote is finalized.' }) {
+export function CTASection({ title = 'Ready to discuss your website?', text = 'Share your business, goals and required pages. Our team will help clarify the practical direction before the final quote is prepared.' }) {
   return (
     <section className="section bg-[#0b1b3a] text-white">
       <div className="container grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -224,15 +268,18 @@ export function ProjectCards({ limit }: { limit?: number }) {
     <div className="grid gap-6 md:grid-cols-2">
       {visible.map((project) => (
         <article key={project.slug} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-          <Image src={project.image} alt={`${project.name} website project preview`} width={720} height={420} className="h-56 w-full object-cover" />
+          <Image src={project.image} alt={`${project.name} website screenshot`} width={720} height={420} className="h-56 w-full object-cover" />
           <div className="p-6">
             <p className="text-sm font-bold text-[#315eef]">{project.industry}</p>
+            <p className="mt-1 text-xs font-extrabold uppercase tracking-[0.12em] text-slate-500">{project.projectType}</p>
             <h3 className="mt-2 text-xl font-extrabold text-[#0b1b3a]">{project.name}</h3>
-            <p className="mt-3 text-sm leading-6 text-slate-600">{project.solution}</p>
+            <p className="mt-3 text-sm leading-6 text-slate-600"><strong>Challenge:</strong> {project.problem}</p>
+            <p className="mt-2 text-sm leading-6 text-slate-600"><strong>Work completed:</strong> {project.solution}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.features.slice(0, 3).map((feature) => <span key={feature} className="rounded bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">{feature}</span>)}</div>
+            <p className="mt-4 text-xs font-bold text-slate-500">Tech: {project.technology.join(', ')}</p>
             <div className="mt-5 flex gap-4 text-sm font-bold text-[#315eef]">
               <Link href={`/case-studies/${project.slug}`}>Case study</Link>
-              <a href={project.liveUrl} aria-disabled={project.liveUrl === '#'}>Live link</a>
+              {project.liveUrl ? <a href={project.liveUrl}>Live link</a> : null}
             </div>
           </div>
         </article>
