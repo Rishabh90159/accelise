@@ -1,0 +1,321 @@
+import {
+  BarChart3,
+  BriefcaseBusiness,
+  Building2,
+  Camera,
+  ClipboardCheck,
+  Code2,
+  Factory,
+  Gem,
+  GraduationCap,
+  Handshake,
+  HeartPulse,
+  Home,
+  LineChart,
+  LucideIcon,
+  Megaphone,
+  Palette,
+  Search,
+  ShieldCheck,
+  ShoppingCart,
+  Sparkles,
+  Store,
+  Target,
+  Wrench,
+} from 'lucide-react';
+
+export const siteConfig = {
+  name: 'RG Web Solutions',
+  founder: 'Rishabh Gautam',
+  position: 'Full Stack Developer',
+  phone: '+91 9759790159',
+  phoneHref: 'tel:+919759790159',
+  whatsapp: '919759790159',
+  email: 'rgiiitdwd@gmail.com',
+  emailHref: 'mailto:rgiiitdwd@gmail.com',
+  location: 'Gurgaon, India',
+  serviceArea: 'India and international clients',
+  portfolioUrl: 'https://rishabh-gautam-portfolio.vercel.app/',
+  baseUrl: 'https://rg-web-solutions.rgiiitdwd.chatgpt.site',
+  description:
+    'Frontend-focused web development for small businesses, manufacturers, exporters and service companies that need credible websites and qualified enquiries.',
+};
+
+export const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/packages', label: 'Packages' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/team', label: 'Team' },
+  { href: '/process', label: 'Process' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
+
+export type FAQ = { question: string; answer: string };
+export type Service = {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  icon: LucideIcon;
+  summary: string;
+  problem: string;
+  suitableFor: string;
+  features: string[];
+  benefits: string[];
+  faqs: FAQ[];
+  keywords: string[];
+};
+
+export const services: Service[] = [
+  {
+    slug: 'business-website-development',
+    title: 'Business Website Development',
+    shortTitle: 'Business Websites',
+    icon: Store,
+    summary: 'Professional websites that explain your services, build credibility and make enquiries easy.',
+    problem: 'Many small businesses rely on word of mouth, WhatsApp or social pages but lose trust when buyers ask for a proper website.',
+    suitableFor: 'Local businesses, consultants, service providers, clinics, agencies and growing companies across India.',
+    features: ['Home, about, services, contact and FAQ pages', 'WhatsApp, call and email enquiry paths', 'Mobile-first responsive design', 'On-page SEO basics and fast loading pages'],
+    benefits: ['A credible digital presence clients can verify', 'Clear presentation of services and service areas', 'More structured enquiries with less back-and-forth'],
+    faqs: [
+      { question: 'Can a small business start with five pages?', answer: 'Yes. A focused five-page website is often enough to establish credibility and generate enquiries.' },
+      { question: 'Will the site work without a backend?', answer: 'Yes. The enquiry flow can use WhatsApp or email first, with Formspree, Web3Forms or a custom API added later.' },
+    ],
+    keywords: ['business website development in India', 'website developer for small businesses'],
+  },
+  {
+    slug: 'b2b-product-catalogue-websites',
+    title: 'B2B Product Catalogue Websites',
+    shortTitle: 'B2B Catalogue',
+    icon: Factory,
+    summary: 'Catalogue websites for manufacturers and exporters that present categories, products and quote requests clearly.',
+    problem: 'B2B buyers need product details, specifications and trust signals before they share requirements.',
+    suitableFor: 'Manufacturers, exporters, industrial suppliers, distributors and product businesses.',
+    features: ['Category and product detail structure', 'Specification tables and downloadable catalogue links', 'Product-specific quote enquiry buttons', 'Manufacturing, certification and export capability sections'],
+    benefits: ['Makes technical product discovery simpler', 'Captures better quote context from buyers', 'Supports search visibility for product categories'],
+    faqs: [
+      { question: 'Can product filters be added without an admin panel?', answer: 'Yes. Filters can work from structured static product data when catalogue changes are occasional.' },
+      { question: 'Can ecommerce be added later?', answer: 'Yes, but payments, inventory and admin features are quoted separately because they require backend planning.' },
+    ],
+    keywords: ['B2B catalogue website development', 'website development for manufacturers'],
+  },
+  {
+    slug: 'portfolio-website-development',
+    title: 'Portfolio Website Development',
+    shortTitle: 'Portfolio Websites',
+    icon: Camera,
+    summary: 'Clean portfolio websites for individuals and studios that need work samples, story and enquiry flow.',
+    problem: 'Creative work can look scattered when it only lives in social posts or PDF attachments.',
+    suitableFor: 'Photographers, designers, architects, freelancers and independent consultants.',
+    features: ['Project galleries and case-study pages', 'About and approach sections', 'Lead capture through calls, WhatsApp and email', 'Optimized image layout and descriptive alt text'],
+    benefits: ['Turns work samples into a searchable owned presence', 'Helps clients understand style, process and fit', 'Creates one polished link for proposals and profiles'],
+    faqs: [{ question: 'Can I update portfolio items later?', answer: 'Yes. Static data files make updates straightforward, and a CMS can be connected later if needed.' }],
+    keywords: ['portfolio website developer India'],
+  },
+  {
+    slug: 'e-commerce-development',
+    title: 'E-commerce Development',
+    shortTitle: 'E-commerce',
+    icon: ShoppingCart,
+    summary: 'Frontend storefront planning and development for product businesses, with backend features scoped separately.',
+    problem: 'Selling online requires a storefront that explains products, policies and purchase flow clearly.',
+    suitableFor: 'Brands preparing for Shopify, WooCommerce, custom checkout or catalogue-first selling.',
+    features: ['Storefront UX and product presentation', 'Collection pages and product details', 'Cart and checkout planning', 'Payment, shipping and admin integration scoping'],
+    benefits: ['Creates a buying experience users can understand', 'Separates frontend polish from backend complexity', 'Reduces uncertainty before full ecommerce investment'],
+    faqs: [{ question: 'Is payment gateway included in static packages?', answer: 'No. Payment gateways, backend and admin panels are estimated separately after requirements are clear.' }],
+    keywords: ['ecommerce website developer India'],
+  },
+  {
+    slug: 'website-redesign',
+    title: 'Website Redesign',
+    shortTitle: 'Redesign',
+    icon: Sparkles,
+    summary: 'Modern redesigns for slow, dated or confusing websites that no longer support sales conversations.',
+    problem: 'An outdated website can make a capable business look inactive, unclear or hard to trust.',
+    suitableFor: 'Companies with an existing site that needs better messaging, speed and mobile experience.',
+    features: ['Content audit and page restructuring', 'Modern responsive interface', 'CTA and enquiry improvements', 'Technical cleanup and SEO foundations'],
+    benefits: ['Improves first impressions', 'Makes key information easier to scan', 'Supports better page speed and search indexing'],
+    faqs: [{ question: 'Can old URLs be preserved?', answer: 'Yes. URL planning is part of redesign work so valuable pages and links are handled carefully.' }],
+    keywords: ['website redesign India'],
+  },
+  {
+    slug: 'landing-page-development',
+    title: 'Landing Page Development',
+    shortTitle: 'Landing Pages',
+    icon: Target,
+    summary: 'Focused landing pages for campaigns, launches and services where one enquiry action matters most.',
+    problem: 'Campaign traffic often drops when users land on a generic page with unclear next steps.',
+    suitableFor: 'Ads, service launches, consultation offers, events and product announcements.',
+    features: ['Conversion-focused section flow', 'Single-page CTA strategy', 'Lead forms with WhatsApp or mailto fallback', 'Fast static delivery'],
+    benefits: ['Keeps visitors focused on one action', 'Improves clarity for paid and organic traffic', 'Makes campaign testing easier'],
+    faqs: [{ question: 'Can a landing page be launched quickly?', answer: 'Yes, if copy, images and offer details are ready. Timelines depend on scope and review cycles.' }],
+    keywords: ['landing page developer India'],
+  },
+  {
+    slug: 'website-maintenance',
+    title: 'Website Maintenance',
+    shortTitle: 'Maintenance',
+    icon: Wrench,
+    summary: 'Ongoing content updates, fixes and performance checks for websites that need steady care.',
+    problem: 'A neglected website can become slow, outdated or inaccurate, which hurts trust and enquiries.',
+    suitableFor: 'Businesses that need periodic updates, small improvements and launch support.',
+    features: ['Content and image updates', 'Bug fixes and small enhancements', 'Performance and SEO checks', 'Launch and hosting coordination'],
+    benefits: ['Keeps information current', 'Reduces downtime and broken page risk', 'Lets owners avoid technical busywork'],
+    faqs: [{ question: 'Is maintenance monthly or on demand?', answer: 'Both models are possible. The right model depends on update frequency and business priority.' }],
+    keywords: ['website maintenance India'],
+  },
+  {
+    slug: 'custom-web-applications',
+    title: 'Custom Web Applications',
+    shortTitle: 'Web Apps',
+    icon: Code2,
+    summary: 'Custom frontend applications and business tools, with backend scope defined only when required.',
+    problem: 'Spreadsheets and manual workflows become hard to manage when teams need structured interfaces.',
+    suitableFor: 'Businesses needing dashboards, calculators, portals, internal tools or custom workflows.',
+    features: ['Application screens and reusable components', 'Form-heavy workflows', 'Dashboard and reporting interfaces', 'API and backend integration planning'],
+    benefits: ['Turns messy workflows into usable tools', 'Creates interfaces teams can repeat daily', 'Keeps future backend integration possible'],
+    faqs: [{ question: 'Can this remain frontend-only?', answer: 'Yes for calculators, static tools and prototype workflows. Persistent data needs an API or backend later.' }],
+    keywords: ['custom web application developer India'],
+  },
+];
+
+export type Industry = {
+  slug: string;
+  title: string;
+  icon: LucideIcon;
+  summary: string;
+  challenges: string[];
+  sections: string[];
+  leadOpportunities: string[];
+  features: string[];
+  enquiryFlow: string;
+};
+
+export const industries: Industry[] = [
+  { slug: 'interior-designers', title: 'Website Development for Interior Designers', icon: Home, summary: 'A refined website helps interior designers present projects, explain budgets and turn visual interest into serious consultation calls.', challenges: ['Instagram shows style but rarely explains process, scope or fit.', 'Clients need project categories, location context and trust before booking a discussion.', 'High-value enquiries need clearer budget and timeline expectations.'], sections: ['Portfolio by space type', 'Design process', 'Services and packages', 'Founder profile', 'Consultation form'], leadOpportunities: ['Room-wise project enquiry', 'WhatsApp design consultation', 'Downloadable project brief checklist'], features: ['Image galleries', 'Before and after layouts', 'Project filters', 'Budget range fields'], enquiryFlow: 'A visitor views living-room work, selects a renovation scope, shares city, budget and timeline, then opens WhatsApp with the project context pre-filled.' },
+  { slug: 'manufacturers-exporters', title: 'Website Development for Manufacturers and Exporters', icon: Factory, summary: 'Manufacturer websites need to make capabilities, categories, specifications and quote requests easy for domestic and overseas buyers.', challenges: ['Product information is often scattered across brochures, catalogues and messages.', 'Buyers need confidence in capacity, quality standards and export readiness.', 'Generic enquiry forms do not capture technical requirements.'], sections: ['Product categories', 'Manufacturing capability', 'Quality and certifications', 'Export markets', 'RFQ flow'], leadOpportunities: ['Product-specific quote buttons', 'Catalogue download requests', 'Bulk order enquiry'], features: ['Specification tables', 'Category filters', 'Certification sections', 'Technical SEO structure'], enquiryFlow: 'A buyer selects a product category, reviews specifications, adds quantity and destination, then sends an RFQ through WhatsApp or email.' },
+  { slug: 'event-planners', title: 'Website Development for Event Planners', icon: Megaphone, summary: 'Event planning websites should show taste, reliability and venue experience while moving visitors toward a date-based enquiry.', challenges: ['Event portfolios can feel repetitive without clear categories.', 'Visitors need fast answers about event types, cities and planning support.', 'Date availability and guest count matter early in the conversation.'], sections: ['Event types', 'Portfolio', 'Planning services', 'Venues served', 'Date enquiry form'], leadOpportunities: ['Wedding enquiry', 'Corporate event brief', 'WhatsApp date check'], features: ['Event galleries', 'Guest-count fields', 'Location filters', 'Package enquiry CTAs'], enquiryFlow: 'A visitor picks wedding planning, shares date, city, guest count and services needed, then receives a pre-filled WhatsApp enquiry.' },
+  { slug: 'photographers', title: 'Website Development for Photographers', icon: Camera, summary: 'A photographer website gives prospects an owned portfolio, pricing context and a calm path to booking a shoot.', challenges: ['Social feeds mix personal, promotional and client work.', 'Image quality, loading speed and mobile layout directly affect trust.', 'Clients need to know categories, style and availability before contacting.'], sections: ['Portfolio galleries', 'Shoot categories', 'About the photographer', 'Packages', 'Booking enquiry'], leadOpportunities: ['Shoot type enquiry', 'Location and date capture', 'WhatsApp booking intent'], features: ['Responsive galleries', 'SEO-friendly image alt text', 'Package cards', 'Fast image delivery'], enquiryFlow: 'A prospect opens a wedding gallery, checks packages, shares date and venue, then starts a booking discussion through WhatsApp.' },
+  { slug: 'diagnostic-centres', title: 'Website Development for Diagnostic Centres', icon: HeartPulse, summary: 'Diagnostic centre websites should make services, test categories, location and appointment contact clear without medical overpromising.', challenges: ['Patients need quick access to tests, timings and phone support.', 'Trust depends on clear facility information and responsible wording.', 'Mobile users often want direct call or WhatsApp actions.'], sections: ['Tests and services', 'Timings', 'Location', 'Home sample collection', 'Appointment enquiry'], leadOpportunities: ['Click-to-call', 'WhatsApp appointment request', 'Test package enquiry'], features: ['Service lists', 'Map section', 'Accessible forms', 'Clear disclaimers where needed'], enquiryFlow: 'A patient selects a test category, shares name, phone, preferred date and location, then calls or sends an appointment enquiry.' },
+  { slug: 'modular-kitchen-businesses', title: 'Website Development for Modular Kitchen Businesses', icon: Gem, summary: 'A modular kitchen website can turn visual browsing into measured enquiries by connecting styles, materials and budget ranges.', challenges: ['Buyers compare many vendors and need fast signals of quality.', 'Material, layout and budget choices affect every project discussion.', 'Project photos need context to avoid looking like generic inspiration boards.'], sections: ['Kitchen styles', 'Materials', 'Process', 'Recent work', 'Design consultation form'], leadOpportunities: ['Layout-based enquiry', 'Free measurement request', 'Budget range capture'], features: ['Gallery filters', 'Material swatches', 'Process timeline', 'WhatsApp consultation CTA'], enquiryFlow: 'A homeowner selects an L-shaped kitchen style, chooses a budget range, shares city and timeline, then sends a design consultation request.' },
+  { slug: 'schools-coaching-institutes', title: 'Website Development for Schools and Coaching Institutes', icon: GraduationCap, summary: 'Education websites need to explain courses, admissions, trust signals and contact paths for parents and students.', challenges: ['Parents and students need structured information before visiting or calling.', 'Courses, batches and admission details change often.', 'A cluttered site makes institutions look less organized.'], sections: ['Programs', 'Admissions', 'Faculty or leadership', 'Results or highlights with proof', 'Enquiry form'], leadOpportunities: ['Course enquiry', 'Admission callback', 'Campus visit request'], features: ['Course pages', 'FAQ blocks', 'Location map', 'Lead form with student details'], enquiryFlow: 'A parent selects a program, adds student class, contact number and preferred visit time, then sends an admission enquiry.' },
+];
+
+export const packages = [
+  { name: 'Starter Website', price: 'Starting from ₹15,000', fit: 'Small businesses and personal portfolios', features: ['Up to 5 pages', 'Responsive design', 'Contact form', 'WhatsApp integration', 'Basic SEO setup', 'Social-media links', 'Two revision rounds'] },
+  { name: 'Business Website', price: 'Starting from ₹25,000', fit: 'Growing businesses that want enquiries', features: ['Up to 10 pages', 'Custom responsive design', 'Service or product presentation', 'Advanced enquiry form', 'WhatsApp and call integration', 'Basic on-page SEO', 'Google Maps integration', 'Performance optimization', 'Three revision rounds'] },
+  { name: 'Premium Catalogue Website', price: 'Starting from ₹40,000', fit: 'Manufacturers, exporters and product businesses', features: ['Product-category structure', 'Individual product pages', 'Product filters', 'Product-specific quotation forms', 'Catalogue download', 'Manufacturing and certification sections', 'Advanced enquiry flow', 'Technical SEO setup', 'Four revision rounds'] },
+];
+
+export const projects = [
+  { slug: 'survijay-foundation', name: 'Survijay Foundation', industry: 'Non-profit', image: '/images/project-foundation.svg', problem: 'The foundation needed a calmer web presence to explain its purpose and encourage outreach.', solution: 'A structured informational site concept with sections for mission, initiatives, trust content and contact.', features: ['Mission-led homepage', 'Initiative sections', 'Donation-ready CTA structure', 'Contact flow'], technology: ['Next.js', 'TypeScript', 'Tailwind CSS'], liveUrl: '#' },
+  { slug: 'diagnostic-centre-website', name: 'Diagnostic Centre Website', industry: 'Healthcare services', image: '/images/project-diagnostics.svg', problem: 'Patients need quick access to services, timings, location and appointment contact.', solution: 'A service-first static website concept with mobile call and WhatsApp enquiry paths.', features: ['Test categories', 'Appointment form', 'Map section', 'Responsive layout'], technology: ['Next.js', 'Static data', 'Accessible forms'], liveUrl: '#' },
+  { slug: 'photography-portfolio-website', name: 'Photography Portfolio Website', industry: 'Creative services', image: '/images/project-photo.svg', problem: 'The photographer needed a polished owned portfolio beyond social media.', solution: 'A gallery-focused portfolio with category pages, package prompts and booking enquiry CTAs.', features: ['Image-led portfolio', 'Shoot categories', 'Booking enquiry', 'SEO metadata'], technology: ['Next.js Image', 'Tailwind CSS', 'Static generation'], liveUrl: '#' },
+  { slug: 'farmwalk-premium-homepage-concept', name: 'Farmwalk Premium Homepage Concept', industry: 'Food and consumer brand', image: '/images/project-farmwalk.svg', problem: 'The brand needed a premium homepage direction that could present freshness and trust.', solution: 'A refined homepage concept with product storytelling, category highlights and enquiry-ready sections.', features: ['Premium hero', 'Category blocks', 'Trust sections', 'CTA flow'], technology: ['Next.js', 'Tailwind CSS', 'Component system'], liveUrl: '#' },
+];
+
+export const processSteps = ['Requirement discussion', 'Scope and quotation', 'Content and design planning', 'Development', 'Review and revisions', 'Testing', 'Launch', 'Post-launch support'];
+export const faqs: FAQ[] = [
+  { question: 'Do you build websites for businesses outside Gurgaon?', answer: 'Yes. RG Web Solutions works with businesses across India and can also support international clients remotely.' },
+  { question: 'Are domain and hosting included?', answer: 'Domain, hosting, third-party tools and paid plugins are separate unless they are explicitly included in the final quotation.' },
+  { question: 'Can the website be upgraded later?', answer: 'Yes. The site can start as a fast static website and later connect to Formspree, Web3Forms, CMS, APIs or ecommerce systems.' },
+  { question: 'Who works on the projects?', answer: 'Projects are led by Rishabh Gautam, a Full Stack Developer, with trusted designers and specialists engaged according to the project requirements.' },
+];
+
+export const blogPosts = [
+  { slug: 'business-website-cost-india', title: 'How Much Does a Business Website Cost in India?', date: '2026-09-09', excerpt: 'A practical guide to website pricing, scope, hosting, content and when a custom quote makes sense.', sections: [['What affects website cost?', 'The biggest cost drivers are number of pages, design depth, content readiness, forms, SEO needs, catalogue complexity and future integrations.'], ['Typical starting ranges', 'A small static business website can start around ₹15,000, while a more detailed business site or catalogue website usually needs a higher budget.'], ['Separate costs to plan for', 'Domain, hosting, premium plugins, paid images, email, ecommerce, backend and payment gateway charges should be clarified before work begins.'], ['How to avoid overspending', 'Start with the pages and enquiry flows your buyers actually need, then add advanced features only when they support sales or operations.']], faqs: [{ question: 'Is ₹15,000 enough for every website?', answer: 'No. It can be enough for a focused starter website, but catalogue, ecommerce and custom features need separate estimation.' }] },
+  { slug: 'manufacturing-website-important-pages', title: 'Important Pages Every Manufacturing Website Should Have', date: '2026-09-09', excerpt: 'The core page structure manufacturers need to help B2B buyers evaluate products and request quotes.', sections: [['Product category pages', 'Category pages help buyers quickly find the product family, variants and specifications they care about.'], ['Capability and quality pages', 'Manufacturing process, certifications, testing and facility information help establish trust before a buyer contacts you.'], ['RFQ and contact flow', 'Quote forms should capture product, quantity, destination, timeline and technical requirements.']], faqs: [{ question: 'Do manufacturers need product pages?', answer: 'Usually yes. Individual product pages make specifications easier to find and improve search targeting.' }] },
+  { slug: 'website-vs-instagram-interior-designers', title: 'Website vs Instagram for Interior Designers', date: '2026-09-09', excerpt: 'Why interior designers should use Instagram for discovery and a website for trust, process and serious enquiries.', sections: [['Instagram is discovery', 'Instagram is useful for visual reach, but posts disappear quickly and rarely explain process, pricing or project fit.'], ['A website is your owned profile', 'A website lets you organize portfolio categories, service details, location, FAQs and enquiry fields in one stable place.'], ['Use both together', 'Send social visitors to project pages or a consultation form so interest can become a qualified lead.']], faqs: [{ question: 'Should designers stop using Instagram?', answer: 'No. Use Instagram for visibility and the website for depth, search and enquiries.' }] },
+  { slug: 'b2b-catalogue-website-generates-enquiries', title: 'How a B2B Catalogue Website Generates Enquiries', date: '2026-09-09', excerpt: 'How structured product pages, specifications and quote CTAs help turn B2B visitors into better enquiries.', sections: [['It reduces buyer effort', 'Buyers can shortlist products faster when categories, specifications and use cases are clearly structured.'], ['It captures better details', 'Product-specific enquiry buttons can pre-fill the product name and ask for quantity, location and requirement notes.'], ['It supports search intent', 'Category and product pages can target specific terms without creating thin duplicate location pages.']], faqs: [{ question: 'Can catalogues work without ecommerce?', answer: 'Yes. Many B2B websites are quote-led rather than checkout-led.' }] },
+  { slug: 'domain-hosting-costs-india', title: 'Domain and Hosting Costs in India', date: '2026-09-09', excerpt: 'A simple explanation of domain, hosting, email and third-party costs that website owners should budget separately.', sections: [['Domain name', 'A domain is the website address. It is usually renewed yearly and pricing depends on the extension and registrar.'], ['Hosting', 'Hosting keeps the website online. Static websites can be hosted efficiently, while backend-heavy websites need more planning.'], ['Email and tools', 'Business email, form tools, analytics, maps and paid plugins may add separate recurring charges.']], faqs: [{ question: 'Are these charges part of development fees?', answer: 'They should be discussed separately so ownership, renewals and access remain clear.' }] },
+  { slug: 'when-redesign-business-website', title: 'When Should a Business Redesign Its Website?', date: '2026-09-09', excerpt: 'Signals that your current website is hurting credibility, speed, search visibility or enquiry quality.', sections: [['The site looks inactive', 'Outdated design, old content and broken links make visitors question whether the business is active.'], ['Mobile experience is weak', 'Most visitors will check your site on mobile, so slow loading and awkward layouts directly affect enquiries.'], ['The message has changed', 'If services, markets or pricing have evolved, the website should reflect the current business clearly.']], faqs: [{ question: 'Can redesign happen in phases?', answer: 'Yes. Priority pages can be redesigned first, then supporting pages can follow.' }] },
+];
+
+export const values = [
+  { title: 'Honest scope', icon: ClipboardCheck, text: 'Clear inclusions, separate estimates for backend or ecommerce, and practical advice before build decisions.' },
+  { title: 'Business-first UX', icon: LineChart, text: 'Pages are planned around credibility, buyer questions and enquiry quality, not decoration alone.' },
+  { title: 'Technical care', icon: ShieldCheck, text: 'Performance, accessibility, SEO structure and maintainable code are treated as core requirements.' },
+  { title: 'Collaborative delivery', icon: Handshake, text: 'Projects are led directly, with trusted specialists brought in when design, content or niche expertise is needed.' },
+];
+export const technologies = ['Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'Static generation', 'SEO metadata', 'Accessible forms'];
+export const teamMembers = [
+  {
+    name: 'Rishabh Gautam',
+    role: 'Full Stack Developer',
+    linkedin: 'https://www.linkedin.com/in/rishabh-gautam-48a7b0249/',
+    focus: 'Leads full-stack architecture, frontend implementation, SEO-aware page structure and client communication.',
+    details: [
+      'Founder-facing technical lead for business websites, catalogue websites and custom web applications.',
+      'Public LinkedIn profile is associated with Gurugram, Haryana, India and Indian Institute of Information Technology Dharwad.',
+      'Portfolio website: https://rishabh-gautam-portfolio.vercel.app/',
+    ],
+    skills: ['Next.js', 'React', 'TypeScript', 'Frontend architecture', 'Full-stack planning'],
+  },
+  {
+    name: 'Himanshu Shekhar',
+    role: 'Backend Developer',
+    linkedin: 'https://www.linkedin.com/in/himanshu-shekhar-83493b231/',
+    focus: 'Supports backend planning, API structure, integrations and scalable server-side implementation when a project needs more than a static website.',
+    details: [
+      'Backend specialist for projects that require APIs, databases, authentication, integrations or admin workflows.',
+      'LinkedIn profile was provided by the business owner; detailed public profile data was not reliably available without LinkedIn access.',
+      'Included as a project specialist engaged according to backend requirements.',
+    ],
+    skills: ['Backend development', 'API planning', 'Database workflows', 'Integration support', 'Server-side logic'],
+  },
+  {
+    name: 'Divyanshu Pal',
+    role: 'Frontend Developer',
+    linkedin: 'https://www.linkedin.com/in/divyanshu-pal-906539202/',
+    focus: 'Supports responsive frontend interfaces, reusable components and polished user-facing page implementation.',
+    details: [
+      'Frontend specialist for responsive layouts, interface components and browser-side experiences.',
+      'Public LinkedIn profile is associated with Hyderabad, Telangana, India and Indian Institute of Information Technology Una.',
+      'Useful for projects that need additional frontend delivery capacity or focused UI implementation.',
+    ],
+    skills: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Responsive UI'],
+  },
+  {
+    name: 'Muskan',
+    role: 'Quality Assurance',
+    linkedin: 'https://www.linkedin.com/in/muskan-08a6b1254/',
+    focus: 'Supports manual QA, release checks, form validation review, responsive testing and issue reporting.',
+    details: [
+      'QA specialist for checking critical user flows before launch, including forms, CTAs and responsive layouts.',
+      'LinkedIn profile was provided by the business owner; detailed public profile data was not reliably available without LinkedIn access.',
+      'Helps strengthen delivery quality when projects require dedicated testing support.',
+    ],
+    skills: ['Manual testing', 'Bug reporting', 'Responsive QA', 'Form validation checks', 'Release review'],
+  },
+];
+export const categoriesServed = [
+  { label: 'Small businesses', icon: BriefcaseBusiness },
+  { label: 'Manufacturers', icon: Factory },
+  { label: 'Exporters', icon: Building2 },
+  { label: 'Service companies', icon: BarChart3 },
+  { label: 'Creative professionals', icon: Palette },
+  { label: 'Local brands', icon: Search },
+];
+
+export function whatsappUrl(message: string) {
+  return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
+}
+export function consultationMessage(context = 'General consultation') {
+  return `Hi ${siteConfig.name}, I would like a free consultation for: ${context}.`;
+}
+export function serviceBySlug(slug: string) {
+  return services.find((service) => service.slug === slug);
+}
+export function industryBySlug(slug: string) {
+  return industries.find((industry) => industry.slug === slug);
+}
+export function projectBySlug(slug: string) {
+  return projects.find((project) => project.slug === slug);
+}
+export function postBySlug(slug: string) {
+  return blogPosts.find((post) => post.slug === slug);
+}
+export function slugUrl(path: string) {
+  return `${siteConfig.baseUrl}${path}`;
+}
