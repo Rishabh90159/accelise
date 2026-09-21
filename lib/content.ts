@@ -25,7 +25,7 @@ import {
 } from 'lucide-react';
 
 export const siteConfig = {
-  name: 'RG Web Solutions',
+  name: 'Accelise',
   founder: 'Rishabh Gautam',
   position: 'Full Stack Developer and Project Lead',
   phone: '+91 9759790159',
@@ -38,7 +38,7 @@ export const siteConfig = {
   portfolioUrl: 'https://rishabh-gautam-portfolio.vercel.app/',
   baseUrl: 'https://rg-web-solutions.rgiiitdwd.chatgpt.site',
   description:
-    'RG Web Solutions is a focused web-development team combining frontend development, backend engineering, quality assurance and project communication to deliver reliable business websites and web applications.',
+    'Accelise is a focused web-development team combining frontend development, backend engineering, quality assurance and project communication to deliver reliable business websites and web applications.',
 };
 
 export const navItems = [
@@ -262,7 +262,7 @@ export const processSteps = [
 ];
 
 export const faqs: FAQ[] = [
-  { question: 'Do you build websites for businesses outside Gurgaon?', answer: 'Yes. RG Web Solutions works with businesses across India and can also support international clients remotely.' },
+  { question: 'Do you build websites for businesses outside Gurgaon?', answer: 'Yes. Accelise works with businesses across India and can also support international clients remotely.' },
   { question: 'Are domain and hosting included?', answer: 'Domain, hosting, third-party tools and paid plugins are separate unless they are explicitly included in the final quotation.' },
   { question: 'Can the website be upgraded later?', answer: 'Yes. A website can start simple and later connect to Formspree, Web3Forms, CMS, APIs or ecommerce systems.' },
   { question: 'Who works on the projects?', answer: 'Our web-development team combines project communication, frontend development, backend engineering and quality assurance based on the approved scope.' },

@@ -35,7 +35,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       <section className="section bg-white"><div className="container"><h2 className="mb-8 text-center text-3xl font-extrabold text-[#0b1b3a]">Related projects</h2><ProjectCards limit={2} /></div></section>
       <FAQSection items={service.faqs} />
       <CTASection title={`Discuss ${service.shortTitle}`} text="Share your business type, pages, features and timeline to receive a practical consultation before the final quote." />
-      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Service', name: service.title, description: service.summary, provider: { '@type': 'ProfessionalService', name: 'RG Web Solutions' }, areaServed: 'India', url: slugUrl(`/services/${service.slug}`) }} />
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Service', name: service.title, description: service.summary, provider: { '@type': 'ProfessionalService', name: 'Accelise' }, areaServed: 'India', url: slugUrl(`/services/${service.slug}`) }} />
       <JsonLd data={{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: service.faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) }} />
     </main>
   );

@@ -6,12 +6,17 @@ export default function HomePage() {
   return (
     <main>
       <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: slugUrl('/') }] }} />
-      <PageHero eyebrow="Website development team in Gurgaon" title="Professional Websites That Turn Visitors Into Customers" text="We design and develop professional business websites, product catalogues and web applications that strengthen credibility and generate qualified enquiries.">
+      <PageHero eyebrow="Website development team in India" title="Web Development Company in India" text="We build professional business websites, web applications, e-commerce platforms and B2B catalogue websites for businesses across India.">
         <AgencyVisual />
       </PageHero>
       <section className="border-b border-slate-200 bg-white py-8">
         <div className="container grid gap-4 md:grid-cols-3">
           {['Coordinated project communication', 'WhatsApp, call and email lead paths', 'Responsive, SEO-ready website foundations'].map((item) => <div className="flex items-center gap-3 text-sm font-bold text-[#0b1b3a]" key={item}><CheckCircle2 className="h-5 w-5 text-[#315eef]" /> {item}</div>)}
+        </div>
+      </section>
+      <section className="section bg-white">
+        <div className="container">
+          <SectionHeading title="Professional Websites That Turn Visitors Into Customers" />
         </div>
       </section>
       <section className="section">

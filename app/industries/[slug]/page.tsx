@@ -35,7 +35,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
       <CTASection title="Plan an industry-specific website" />
-      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Service', name: industry.title, description: industry.summary, provider: { '@type': 'ProfessionalService', name: 'RG Web Solutions' }, url: slugUrl(`/industries/${industry.slug}`) }} />
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Service', name: industry.title, description: industry.summary, provider: { '@type': 'ProfessionalService', name: 'Accelise' }, url: slugUrl(`/industries/${industry.slug}`) }} />
     </main>
   );
 }

@@ -28,7 +28,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
           <aside className="h-fit rounded-lg border border-slate-200 bg-slate-50 p-5"><h2 className="font-extrabold text-[#0b1b3a]">Table of contents</h2><ol className="mt-4 grid gap-2 text-sm text-slate-700">{post.sections.map(([heading]) => <li key={heading}><a className="link-underline" href={`#${heading.toLowerCase().replaceAll(' ', '-')}`}>{heading}</a></li>)}</ol></aside>
           <div className="grid gap-8">
             <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700">
-              <p><strong>Author:</strong> RG Web Solutions Team</p>
+              <p><strong>Author:</strong> Accelise Team</p>
               <p className="mt-1"><strong>Updated:</strong> {post.date}</p>
             </div>
             {post.sections.map(([heading, body]) => <section id={heading.toLowerCase().replaceAll(' ', '-')} key={heading}><h2 className="text-2xl font-extrabold text-[#0b1b3a]">{heading}</h2><p className="mt-3 leading-8 text-slate-600">{body}</p></section>)}

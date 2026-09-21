@@ -6,7 +6,7 @@ import { siteConfig, slugUrl, teamMembers } from '@/lib/content';
 export const metadata: Metadata = {
   title: 'Team',
   description:
-    'Meet the RG Web Solutions team: full-stack project leadership, backend development, frontend development and quality assurance.',
+    'Meet the Accelise team: full-stack project leadership, backend development, frontend development and quality assurance.',
   alternates: { canonical: '/team' },
 };
 

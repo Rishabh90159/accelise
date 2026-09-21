@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs, CTASection, PageHero, PageVisual, ProjectCards } from '@/components/site';
 
-export const metadata: Metadata = { title: 'Portfolio', description: 'Selected completed projects and demo concepts by RG Web Solutions with case studies, project type, technologies and work completed.', alternates: { canonical: '/portfolio' } };
+export const metadata: Metadata = { title: 'Portfolio', description: 'Selected completed projects and demo concepts by Accelise with case studies, project type, technologies and work completed.', alternates: { canonical: '/portfolio' } };
 
 export default function PortfolioPage() {
   return (

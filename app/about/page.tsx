@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { Breadcrumbs, CTASection, ListBlock, PageHero, PageVisual, SectionHeading } from '@/components/site';
 import { technologies, values } from '@/lib/content';
 
-export const metadata: Metadata = { title: 'About RG Web Solutions', description: 'Learn about the RG Web Solutions team, services, approach, technology stack and service coverage.', alternates: { canonical: '/about' } };
+export const metadata: Metadata = { title: 'About Accelise', description: 'Learn about the Accelise team, services, approach, technology stack and service coverage.', alternates: { canonical: '/about' } };
 
 export default function AboutPage() {
   return (
     <main>
       <Breadcrumbs items={[{ label: 'About' }]} />
-      <PageHero eyebrow="About" title="A focused web-development team for business websites" text="RG Web Solutions combines project communication, frontend development, backend engineering and quality assurance to deliver reliable business websites, product catalogues and web applications.">
+      <PageHero eyebrow="About" title="A focused web-development team for business websites" text="Accelise combines project communication, frontend development, backend engineering and quality assurance to deliver reliable business websites, product catalogues and web applications.">
         <PageVisual title="Agency capability" items={['Strategy', 'Frontend', 'Backend', 'QA']} />
       </PageHero>
       <section className="section bg-white">

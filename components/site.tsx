@@ -46,7 +46,7 @@ export function Footer() {
       <div className="container grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
         <div>
           <p className="font-heading text-2xl font-extrabold">{siteConfig.name}</p>
-          <p className="mt-4 max-w-xl text-slate-300">RG Web Solutions helps businesses build credible, responsive and enquiry-focused websites.</p>
+          <p className="mt-4 max-w-xl text-slate-300">Accelise helps businesses build credible, responsive and enquiry-focused websites.</p>
           <p className="mt-4 text-sm text-slate-400">{siteConfig.location}. Service coverage: {siteConfig.serviceArea}.</p>
         </div>
         <div>
@@ -97,7 +97,7 @@ export function FloatingActions() {
       <a href={whatsappUrl(consultationMessage('Website enquiry'))} className="grid h-12 w-12 place-items-center rounded-full bg-[#19a974] text-white shadow-lg" aria-label="Contact on WhatsApp" data-cta="floating-whatsapp">
         <MessageCircle className="h-5 w-5" />
       </a>
-      <a href={siteConfig.phoneHref} className="grid h-12 w-12 place-items-center rounded-full bg-[#0b1b3a] text-white shadow-lg sm:hidden" aria-label="Call RG Web Solutions" data-cta="floating-call">
+      <a href={siteConfig.phoneHref} className="grid h-12 w-12 place-items-center rounded-full bg-[#0b1b3a] text-white shadow-lg sm:hidden" aria-label="Call Accelise" data-cta="floating-call">
         <Phone className="h-5 w-5" />
       </a>
     </div>
