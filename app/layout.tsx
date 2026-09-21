@@ -8,24 +8,51 @@ const inter = Inter({ variable: '--font-inter', subsets: ['latin'] });
 const manrope = Manrope({ variable: '--font-manrope', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.baseUrl),
+  metadataBase: new URL('https://accelise.in'),
+
   title: {
-    default: `${siteConfig.name} | Website Developer in Gurgaon`,
-    template: `%s | ${siteConfig.name}`,
+    default: 'Web Development Company in India | Accelise',
+    template: '%s | Accelise',
   },
-  description: siteConfig.description,
-  alternates: { canonical: '/' },
+
+  description:
+    'Accelise is a web development company in India building professional websites, web applications, e-commerce platforms and custom digital solutions for businesses across India.',
+
+  keywords: [
+    'web development company in India',
+    'website development company in India',
+    'web development services India',
+    'website development services India',
+    'custom web development company',
+    'business website development',
+    'web application development company',
+    'ecommerce website development India',
+  ],
+
+  alternates: {
+    canonical: 'https://accelise.in/',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+
   openGraph: {
-    title: `${siteConfig.name} | Business Website Development in India`,
-    description: siteConfig.description,
-    url: siteConfig.baseUrl,
-    siteName: siteConfig.name,
+    title: 'Web Development Company in India | Accelise',
+    description:
+      'Accelise builds professional websites, web applications, e-commerce platforms and custom digital solutions for businesses across India.',
+    url: 'https://accelise.in/',
+    siteName: 'Accelise',
     type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: `${siteConfig.name} | Website Developer in Gurgaon`,
-    description: siteConfig.description,
+    locale: 'en_IN',
   },
 };
 
