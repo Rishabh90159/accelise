@@ -23,6 +23,18 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       <PageHero eyebrow={`${project.industry} | ${project.projectType}`} title={`${project.name} case study`} text={project.solution}>
         <PageVisual title="Case study map" items={['Context', 'Challenge', 'Solution', 'Outcome']} />
       </PageHero>
+      {project.liveUrl ? (
+        <div className="container mt-6">
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-md bg-[#315eef] px-5 py-3 text-sm font-extrabold text-white shadow-sm transition hover:bg-[#244bd4]"
+          >
+            View Website
+          </a>
+        </div>
+      ) : null}
       <section className="section">
         <div className="container grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <Image src={project.image} alt={`${project.name} main website screenshot`} width={900} height={540} className="rounded-lg border border-slate-200 bg-white shadow-sm" />

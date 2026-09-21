@@ -277,9 +277,18 @@ export function ProjectCards({ limit }: { limit?: number }) {
             <p className="mt-2 text-sm leading-6 text-slate-600"><strong>Work completed:</strong> {project.solution}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.features.slice(0, 3).map((feature) => <span key={feature} className="rounded bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">{feature}</span>)}</div>
             <p className="mt-4 text-xs font-bold text-slate-500">Tech: {project.technology.join(', ')}</p>
-            <div className="mt-5 flex gap-4 text-sm font-bold text-[#315eef]">
+            <div className="mt-5 flex flex-wrap items-center gap-4 text-sm font-bold text-[#315eef]">
               <Link href={`/case-studies/${project.slug}`}>Case study</Link>
-              {project.liveUrl ? <a href={project.liveUrl}>Live link</a> : null}
+              {project.liveUrl ? (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 rounded-md border border-[#315eef] px-3 py-1.5 text-[#315eef] transition hover:bg-[#315eef] hover:text-white"
+                >
+                  View Website
+                </a>
+              ) : null}
             </div>
           </div>
         </article>
