@@ -16,7 +16,7 @@ export default function HomePage() {
       </section>
       <section className="section">
         <div className="container">
-          <SectionHeading eyebrow="Who we serve" title="Built for Indian businesses that need trust before leads" text="Small businesses, manufacturers, exporters and service companies need clear websites that answer buyer questions quickly." />
+          <SectionHeading eyebrow="Who we serve" title="Built for Indian businesses that need trust before leads" text="Businesses, manufacturers, exporters and service companies need clear websites that answer buyer questions quickly." />
           <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-6">
             {categoriesServed.map((category) => { const Icon = category.icon; return <div className="rounded-lg border border-slate-200 bg-white p-5 text-center shadow-sm" key={category.label}><Icon className="mx-auto h-7 w-7 text-[#315eef]" /><p className="mt-3 text-sm font-bold text-[#0b1b3a]">{category.label}</p></div>; })}
           </div>

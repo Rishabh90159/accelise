@@ -13,7 +13,7 @@ export default function AboutPage() {
       </PageHero>
       <section className="section bg-white">
         <div className="container grid gap-6 lg:grid-cols-2">
-          <div className="rounded-lg border border-slate-200 p-6 shadow-sm"><h2 className="text-2xl font-extrabold text-[#0b1b3a]">Who we work with</h2><p className="mt-4 leading-7 text-slate-600">Our team works with small businesses, manufacturers, exporters, service companies, creative professionals and local brands that need a credible website and practical enquiry flow.</p></div>
+          <div className="rounded-lg border border-slate-200 p-6 shadow-sm"><h2 className="text-2xl font-extrabold text-[#0b1b3a]">Who we work with</h2><p className="mt-4 leading-7 text-slate-600">Our team works with businesses, manufacturers, exporters, service companies, creative professionals and local brands that need a credible website and practical enquiry flow.</p></div>
           <div className="rounded-lg border border-slate-200 p-6 shadow-sm"><h2 className="text-2xl font-extrabold text-[#0b1b3a]">Our approach</h2><p className="mt-4 leading-7 text-slate-600">We start with business goals, buyer questions, content readiness and required CTAs. The build stays lean unless a feature directly improves credibility, enquiries or maintainability.</p></div>
           <ListBlock title="Technologies used" items={technologies} />
           <ListBlock title="Team capabilities" items={['Project planning and communication', 'Frontend interface development', 'Backend and integration support', 'Quality assurance and launch checks']} />
