@@ -7,14 +7,16 @@ export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const service = serviceBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const service = serviceBySlug(slug);
   if (!service) return {};
   return { title: service.title, description: service.summary, alternates: { canonical: `/services/${service.slug}` }, keywords: service.keywords };
 }
 
-export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const service = serviceBySlug(params.slug);
+export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const service = serviceBySlug(slug);
   if (!service) notFound();
   return (
     <main>

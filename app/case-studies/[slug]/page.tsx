@@ -8,14 +8,16 @@ export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const project = projectBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projectBySlug(slug);
   if (!project) return {};
   return { title: `${project.name} Case Study`, description: project.solution, alternates: { canonical: `/case-studies/${project.slug}` } };
 }
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const project = projectBySlug(params.slug);
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projectBySlug(slug);
   if (!project) notFound();
   return (
     <main>
