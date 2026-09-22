@@ -63,7 +63,6 @@ export function Footer() {
               ['Team', '/team'],
               ['Process', '/process'],
               ['Portfolio', '/portfolio'],
-              ['Blog', '/blog'],
             ].map(([label, href]) => <Link href={href} key={href} className="hover:text-white">{label}</Link>)}
           </div>
         </div>
@@ -129,7 +128,7 @@ export function PageHero({ eyebrow, title, text, children }: { eyebrow: string; 
       <div className="container grid gap-8 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="mt-4 max-w-4xl text-4xl font-extrabold leading-tight text-[#0b1b3a] md:text-5xl">{title}</h1>
+          <h2 className="mt-4 max-w-4xl text-3xl font-extrabold leading-tight text-[#0b1b3a] md:text-4xl">{title}</h2>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">{text}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/contact" cta="hero-consultation">Get a Free Consultation</ButtonLink>

@@ -273,15 +273,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-
-    // ─────────────────────────────
-    // Blog
-    // ─────────────────────────────
-    {
-      url: `${BASE_URL}/blog`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
   ];
 }

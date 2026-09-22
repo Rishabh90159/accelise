@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <main>
       <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: slugUrl('/') }] }} />
-      <PageHero eyebrow="Website development team in India" title="Web Development Company in India" text="We build professional business websites, web applications, e-commerce platforms and B2B catalogue websites for businesses across India.">
+      <PageHero eyebrow="Bringing Businesses To The Digital World" title="Take Your Business Online, Reach More Customers, Grow Faster" text="We build professional business websites, web applications, e-commerce platforms and B2B catalogue websites for businesses across India.">
         <AgencyVisual />
       </PageHero>
       <section className="border-b border-slate-200 bg-white py-8">

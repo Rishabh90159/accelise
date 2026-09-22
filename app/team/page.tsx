@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, GraduationCap } from 'lucide-react';
 import { Breadcrumbs, CTASection, JsonLd, PageHero, PageVisual, SectionHeading, TeamPortrait } from '@/components/site';
 import { siteConfig, slugUrl, teamMembers } from '@/lib/content';
 
@@ -37,6 +37,11 @@ export default function TeamPage() {
                     <div>
                       <p className="text-sm font-extrabold uppercase tracking-[0.12em] text-[#315eef]">{member.role}</p>
                       <h2 className="mt-1 text-2xl font-extrabold text-[#0b1b3a]">{member.name}</h2>
+                      {member.education ? (
+                        <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-500">
+                          <GraduationCap className="h-4 w-4 shrink-0" /> {member.education}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                   <a href={member.linkedin} className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-slate-300 text-[#0b1b3a] hover:border-[#315eef]" aria-label={`${member.name} LinkedIn profile`}>
