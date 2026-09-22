@@ -14,11 +14,6 @@ export default function HomePage() {
           {['Coordinated project communication', 'WhatsApp, call and email lead paths', 'Responsive, SEO-ready website foundations'].map((item) => <div className="flex items-center gap-3 text-sm font-bold text-[#0b1b3a]" key={item}><CheckCircle2 className="h-5 w-5 text-[#315eef]" /> {item}</div>)}
         </div>
       </section>
-      <section className="section bg-white">
-        <div className="container">
-          <SectionHeading title="Professional Websites That Turn Visitors Into Customers" />
-        </div>
-      </section>
       <section className="section">
         <div className="container">
           <SectionHeading eyebrow="Who we serve" title="Built for Indian businesses that need trust before leads" text="Small businesses, manufacturers, exporters and service companies need clear websites that answer buyer questions quickly." />

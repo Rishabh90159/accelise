@@ -12,7 +12,7 @@ export function Header() {
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/92 backdrop-blur">
         <nav className="container flex min-h-16 items-center justify-between gap-5">
           <Link href="/" className="flex items-center gap-3 font-heading text-lg font-extrabold text-[#0b1b3a]">
-            <span className="grid h-10 w-10 place-items-center rounded-md bg-[#0b1b3a] text-white">RG</span>
+            <span className="grid h-10 w-10 place-items-center rounded-md bg-[#0b1b3a] text-white">AC</span>
             <span>{siteConfig.name}</span>
           </Link>
           <div className="hidden items-center gap-5 text-sm font-semibold text-slate-700 xl:flex">
