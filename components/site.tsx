@@ -172,18 +172,55 @@ export function PageVisual({ title = 'Complete delivery system', items = ['Disco
   );
 }
 
-export function TeamPortrait({ initials }: { initials: string }) {
-  return <div className="grid h-16 w-16 place-items-center rounded-lg bg-[#0b1b3a] font-heading text-xl font-extrabold text-white shadow-sm">{initials}</div>;
+export function TeamPortrait({
+  initials,
+  image,
+  name,
+  imageOrigin,
+  imageZoom,
+  size = 'md',
+}: {
+  initials: string;
+  image?: string;
+  name?: string;
+  imageOrigin?: string;
+  imageZoom?: number;
+  size?: 'md' | 'lg';
+}) {
+  const dimension = size === 'lg' ? 'h-28 w-28' : 'h-20 w-20';
+  if (image) {
+    return (
+      <div className={`relative ${dimension} shrink-0 overflow-hidden rounded-full ring-4 ring-white shadow-md`}>
+        <Image
+          src={image}
+          alt={name ?? 'Team member'}
+          fill
+          className="object-cover"
+          style={imageZoom ? { transform: `scale(${imageZoom})`, transformOrigin: imageOrigin ?? '50% 50%' } : undefined}
+          sizes={size === 'lg' ? '112px' : '80px'}
+        />
+      </div>
+    );
+  }
+  return (
+    <div className={`grid ${dimension} shrink-0 place-items-center rounded-full bg-[#0b1b3a] font-heading text-xl font-extrabold text-white shadow-md ring-4 ring-white`}>
+      {initials}
+    </div>
+  );
 }
 
 export function TeamPreview() {
   return (
-    <div className="grid gap-4 md:grid-cols-4">
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
       {teamMembers.map((member) => (
-        <Link href="/team" className="rounded-lg border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg" key={member.name}>
-          <div className="mx-auto w-fit"><TeamPortrait initials={member.initials} /></div>
-          <h3 className="mt-4 font-extrabold text-[#0b1b3a]">{member.name}</h3>
-          <p className="mt-1 text-sm text-slate-600">{member.role}</p>
+        <Link
+          href="/team"
+          className="group flex flex-col items-center rounded-xl border border-slate-200 bg-white px-5 pb-6 pt-8 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#315eef]/40 hover:shadow-lg"
+          key={member.name}
+        >
+          <TeamPortrait initials={member.initials} image={member.image} name={member.name} imageOrigin={member.imageOrigin} imageZoom={member.imageZoom} />
+          <h3 className="mt-4 font-heading font-extrabold text-[#0b1b3a]">{member.name}</h3>
+          <span className="mt-2 inline-block rounded-full bg-[#e8eef8] px-3 py-1 text-xs font-bold text-[#315eef]">{member.role}</span>
         </Link>
       ))}
     </div>

@@ -30,14 +30,16 @@ export default function TeamPage() {
           />
           <div className="grid gap-6 md:grid-cols-2">
             {teamMembers.map((member) => (
-              <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" key={member.linkedin}>
+              <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md" key={member.linkedin}>
                 <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <TeamPortrait initials={member.initials} />
-                    <p className="mt-5 text-sm font-extrabold uppercase tracking-[0.12em] text-[#315eef]">{member.role}</p>
-                    <h2 className="mt-2 text-2xl font-extrabold text-[#0b1b3a]">{member.name}</h2>
+                  <div className="flex items-center gap-4">
+                    <TeamPortrait initials={member.initials} image={member.image} name={member.name} imageOrigin={member.imageOrigin} imageZoom={member.imageZoom} size="lg" />
+                    <div>
+                      <p className="text-sm font-extrabold uppercase tracking-[0.12em] text-[#315eef]">{member.role}</p>
+                      <h2 className="mt-1 text-2xl font-extrabold text-[#0b1b3a]">{member.name}</h2>
+                    </div>
                   </div>
-                  <a href={member.linkedin} className="grid h-10 w-10 place-items-center rounded-md border border-slate-300 text-[#0b1b3a] hover:border-[#315eef]" aria-label={`${member.name} LinkedIn profile`}>
+                  <a href={member.linkedin} className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-slate-300 text-[#0b1b3a] hover:border-[#315eef]" aria-label={`${member.name} LinkedIn profile`}>
                     <ExternalLink className="h-5 w-5" />
                   </a>
                 </div>
