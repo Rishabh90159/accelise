@@ -20,7 +20,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   if (!industry) notFound();
   return (
     <main>
-      <Breadcrumbs items={[{ label: 'Industries' }, { label: industry.title }]} />
+      <Breadcrumbs items={[{ label: 'Industries', href: '/industries' },{ label: industry.title }]} />
       <PageHero eyebrow="Industry website development" title={industry.title} text={industry.summary}>
         <PageVisual title="Industry flow" items={['Challenges', 'Sections', 'Leads', 'CTA']} />
       </PageHero>

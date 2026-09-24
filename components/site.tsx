@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, ChevronRight, Mail, Menu, MessageCircle, Phone } from 'lucide-react';
-import { faqs, navItems, projects, services, siteConfig, teamMembers, whatsappUrl, consultationMessage, type FAQ } from '@/lib/content';
+import { faqs, industries, navItems, projects, services, siteConfig, teamMembers, whatsappUrl, consultationMessage, type FAQ } from '@/lib/content';
 
 export function Header() {
   return (
@@ -43,7 +43,7 @@ export function Header() {
 export function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-[#071226] text-white">
-      <div className="container grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
+      <div className="container grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_0.8fr]">
         <div>
           <p className="font-heading text-2xl font-extrabold">{siteConfig.name}</p>
           <p className="mt-4 max-w-xl text-slate-300">Accelise helps businesses build credible, responsive and enquiry-focused websites.</p>
@@ -56,10 +56,17 @@ export function Footer() {
           </div>
         </div>
         <div>
+          <p className="font-bold">Industries</p>
+          <div className="mt-4 grid gap-2 text-sm text-slate-300">
+            {industries.map((industry) => <Link href={`/industries/${industry.slug}`} key={industry.slug} className="hover:text-white">{industry.title.replace('Website Development for ', '')}</Link>)}
+          </div>
+        </div>
+        <div>
           <p className="font-bold">Company</p>
           <div className="mt-4 grid gap-2 text-sm text-slate-300">
             {[
               ['About', '/about'],
+              ['Industries', '/industries'],
               ['Team', '/team'],
               ['Process', '/process'],
               ['Portfolio', '/portfolio'],
@@ -128,7 +135,7 @@ export function PageHero({ eyebrow, title, text, children }: { eyebrow: string; 
       <div className="container grid gap-8 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h2 className="mt-4 max-w-4xl text-3xl font-extrabold leading-tight text-[#0b1b3a] md:text-4xl">{title}</h2>
+          <h1 className="mt-4 max-w-4xl text-3xl font-extrabold leading-tight text-[#0b1b3a] md:text-4xl">{title}</h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">{text}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/contact" cta="hero-consultation">Get a Free Consultation</ButtonLink>

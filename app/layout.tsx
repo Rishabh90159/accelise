@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { Inter, Manrope } from 'next/font/google';
 import './globals.css';
 import { JsonLd, LayoutShell } from '@/components/site';
-import { siteConfig, slugUrl } from '@/lib/content';
+import { siteConfig, slugUrl, teamMembers } from '@/lib/content';
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] });
 const manrope = Manrope({ variable: '--font-manrope', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://accelise.in'),
+  metadataBase: new URL(siteConfig.baseUrl),
 
   title: {
     default: 'Web Development Company in India | Accelise',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: 'https://accelise.in/',
+    canonical: '/',
   },
 
   robots: {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: 'Web Development Company in India | Accelise',
     description:
       'Accelise builds professional websites, web applications, e-commerce platforms and custom digital solutions for businesses across India.',
-    url: 'https://accelise.in/',
+    url: '/',
     siteName: 'Accelise',
     type: 'website',
     locale: 'en_IN',
@@ -61,13 +61,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     '@context': 'https://schema.org',
     '@type': ['Organization', 'ProfessionalService'],
     name: siteConfig.name,
+    description: siteConfig.description,
+    logo: slugUrl('/icon.svg'),
+    image: slugUrl('/icon.svg'),
+    priceRange: '₹10,000 - ₹30,000+',
     founder: siteConfig.founder,
     email: siteConfig.email,
     telephone: siteConfig.phone,
-    address: { '@type': 'PostalAddress', addressLocality: 'Gurgaon', addressCountry: 'IN' },
+    address: { '@type': 'PostalAddress', addressLocality: 'Gurugram', addressRegion: 'Haryana', addressCountry: 'IN' },
     areaServed: ['India', 'International'],
     url: slugUrl('/'),
-    sameAs: [siteConfig.portfolioUrl],
+    employee: teamMembers.map((member) => ({ '@type': 'Person', name: member.name, jobTitle: member.role, sameAs: member.linkedin })),
   };
 
   return (

@@ -19,6 +19,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const { slug } = await params;
   const project = projectBySlug(slug);
   if (!project) notFound();
+  const gallery = project.screenshots.filter((screenshot) => screenshot !== project.image);
   return (
     <main>
       <Breadcrumbs items={[{ label: 'Portfolio', href: '/portfolio' }, { label: project.name }]} />
@@ -49,21 +50,22 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         <div className="container mt-6 grid gap-6 lg:grid-cols-2">
           <ListBlock title="Proposed solution" items={[project.solution]} />
           <ListBlock title="Information architecture" items={project.architecture} />
-          <ListBlock title="Important pages" items={project.architecture} />
           <ListBlock title="Features implemented" items={project.features} />
           <ListBlock title="Development approach" items={['Define the audience and primary enquiry action.', 'Create reusable page sections from structured content.', 'Keep the build responsive, fast and easy to update.', 'Prepare CTA paths for WhatsApp, email or future form tools.']} />
           <ListBlock title="Responsive considerations" items={['Mobile CTAs remain visible and easy to tap.', 'Cards and galleries stack cleanly on small screens.', 'Text stays readable without oversized headings.', 'Images keep consistent aspect ratios across breakpoints.']} />
           <ListBlock title="Technologies used" items={project.technology} />
-          <ListBlock title="Honest final outcome" items={['A polished website structure for the stated business context.', 'No revenue, traffic or conversion improvement is claimed without verified data.', 'Further integrations can be scoped separately when business requirements are confirmed.']} />
+          <ListBlock title="Outcome" items={['A clear, responsive website structure built around the audience and primary enquiry action.', 'Fast static pages with SEO metadata and mobile-friendly CTAs.', 'A foundation that can grow with forms, CMS or integrations as the business needs them.']} />
         </div>
-        <div className="container mt-8">
-          <h2 className="mb-5 text-2xl font-extrabold text-[#0b1b3a]">Screenshot gallery</h2>
-          <div className="grid gap-5 md:grid-cols-3">
-            {project.screenshots.map((screenshot, index) => (
-              <Image src={screenshot} alt={`${project.name} screenshot ${index + 1}`} width={720} height={420} className="rounded-lg border border-slate-200 bg-white shadow-sm" key={screenshot} />
-            ))}
+        {gallery.length > 0 ? (
+          <div className="container mt-8">
+            <h2 className="mb-5 text-2xl font-extrabold text-[#0b1b3a]">Screenshot gallery</h2>
+            <div className="grid gap-5 md:grid-cols-3">
+              {gallery.map((screenshot, index) => (
+                <Image src={screenshot} alt={`${project.name} screenshot ${index + 1}`} width={720} height={420} className="rounded-lg border border-slate-200 bg-white shadow-sm" key={screenshot} />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
       </section>
       <CTASection title="Create a similar website" />
       <JsonLd data={{ '@context': 'https://schema.org', '@type': 'CreativeWork', name: project.name, description: project.solution, url: slugUrl(`/case-studies/${project.slug}`) }} />

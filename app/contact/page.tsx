@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <main>
       <Breadcrumbs items={[{ label: 'Contact' }]} />
-      <PageHero eyebrow="Contact" title="Talk to our team about your website" text="Share your business, required pages, features, budget range and timeline. The form prepares a WhatsApp or email enquiry without using a backend.">
+      <PageHero eyebrow="Contact" title="Talk to our team about your website" text="Share your business, required pages, features, budget range and timeline. Send it straight to our team on WhatsApp or email.">
         <PageVisual title="Enquiry details" items={['Business', 'Service', 'Budget', 'Timeline']} />
       </PageHero>
       <section className="section">

@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const service = serviceBySlug(slug);
   if (!service) return {};
-  return { title: service.title, description: service.summary, alternates: { canonical: `/services/${service.slug}` }, keywords: service.keywords };
+  return { title: `${service.title} Services in India`, description: service.summary, alternates: { canonical: `/services/${service.slug}` }, keywords: service.keywords };
 }
 
 export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
