@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, ChevronRight, Mail, MessageCircle, Phone } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ChevronRight, Mail, MapPin, Phone } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/whatsapp-icon';
 import { MobileMenu } from '@/components/mobile-menu';
 import { faqs, industries, navItems, projects, services, siteConfig, teamMembers, whatsappUrl, consultationMessage, type FAQ } from '@/lib/content';
 
@@ -30,48 +31,51 @@ export function Header() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-[#071226] text-white">
-      <div className="container grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_0.8fr]">
-        <div>
-          <p className="font-heading text-2xl font-extrabold">{siteConfig.name}</p>
-          <p className="mt-4 max-w-xl text-slate-300">Accelise helps businesses build credible, responsive and enquiry-focused websites.</p>
-          <p className="mt-4 text-sm text-slate-400">{siteConfig.location}. Service coverage: {siteConfig.serviceArea}.</p>
-        </div>
-        <div>
-          <p className="font-bold">Services</p>
-          <div className="mt-4 grid gap-2 text-sm text-slate-300">
-            {services.slice(0, 5).map((service) => <Link href={`/services/${service.slug}`} key={service.slug} className="hover:text-white">{service.shortTitle}</Link>)}
-          </div>
-        </div>
-        <div>
-          <p className="font-bold">Industries</p>
-          <div className="mt-4 grid gap-2 text-sm text-slate-300">
-            {industries.map((industry) => <Link href={`/industries/${industry.slug}`} key={industry.slug} className="hover:text-white">{industry.title.replace('Website Development for ', '')}</Link>)}
-          </div>
-        </div>
-        <div>
-          <p className="font-bold">Company</p>
-          <div className="mt-4 grid gap-2 text-sm text-slate-300">
+    <footer id="footer" className="border-t border-slate-200 bg-[#071226] text-white">
+      <div className="container grid grid-cols-2 gap-x-6 gap-y-10 py-12 lg:grid-cols-[1.4fr_1fr_1.3fr_0.8fr] lg:gap-10">
+        <div className="col-span-2 lg:col-span-1">
+          <Link href="/" className="inline-flex items-center gap-3 font-heading text-2xl font-extrabold">
+            <span className="grid h-10 w-10 place-items-center rounded-md bg-[#315eef] text-base text-white">AC</span>
+            {siteConfig.name}
+          </Link>
+          <p className="mt-4 max-w-md text-sm leading-6 text-slate-300">Accelise helps businesses build credible, responsive and enquiry-focused websites.</p>
+          <p className="mt-3 flex items-center gap-2 text-sm text-slate-400"><MapPin className="h-4 w-4 shrink-0 text-[#8fb0ff]" /> {siteConfig.location} · Serving India and international clients</p>
+          <div className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
             {[
-              ['About', '/about'],
-              ['Industries', '/industries'],
-              ['Team', '/team'],
-              ['Process', '/process'],
-              ['Portfolio', '/portfolio'],
-            ].map(([label, href]) => <Link href={href} key={href} className="hover:text-white">{label}</Link>)}
+              { href: whatsappUrl(consultationMessage('Website enquiry')), label: 'Chat on WhatsApp', icon: <WhatsAppIcon className="h-4 w-4 text-[#25d366]" />, external: true },
+              { href: siteConfig.emailHref, label: siteConfig.email, icon: <Mail className="h-4 w-4" /> },
+            ].map((item) => (
+              <a key={item.label} href={item.href} {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="flex min-h-11 min-w-0 items-center gap-3 rounded-md border border-white/10 bg-white/5 px-3 text-sm font-semibold text-slate-200 transition hover:border-[#8fb0ff]/50 hover:bg-white/10 hover:text-white">
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded bg-white/10 text-[#8fb0ff]">{item.icon}</span>
+                <span className="truncate">{item.label}</span>
+              </a>
+            ))}
           </div>
         </div>
-        <div>
-          <p className="font-bold">Contact</p>
-          <div className="mt-4 grid gap-3 text-sm text-slate-300">
-            <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
-            <a href={siteConfig.phoneAltHref}>{siteConfig.phoneAlt}</a>
-            <a href={siteConfig.emailHref}>{siteConfig.email}</a>
-            <a href={whatsappUrl(consultationMessage('Website enquiry'))}>WhatsApp</a>
-          </div>
+        <FooterLinks title="Services" links={services.slice(0, 5).map((service) => [service.shortTitle, `/services/${service.slug}`])} />
+        <FooterLinks title="Industries" className="col-span-2 lg:col-span-1" listClassName="grid-cols-2 lg:grid-cols-1" links={industries.map((industry) => [industry.title.replace('Website Development for ', ''), `/industries/${industry.slug}`])} />
+        <FooterLinks title="Company" className="col-start-2 row-start-2 lg:col-start-auto lg:row-start-auto" links={[['About', '/about'], ['Team', '/team'], ['Process', '/process'], ['Portfolio', '/portfolio'], ['Packages', '/packages'], ['Contact', '/contact']]} />
+      </div>
+      <div className="border-t border-white/10">
+        <div className="container flex flex-col gap-2 pb-24 pt-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:pb-5">
+          <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+          <p>Web development in Gurugram for businesses across India.</p>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterLinks({ title, links, className = '', listClassName = '' }: { title: string; links: string[][]; className?: string; listClassName?: string }) {
+  return (
+    <div className={className}>
+      <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#8fb0ff]">{title}</p>
+      <ul className={`mt-4 grid gap-x-4 gap-y-1 text-sm text-slate-300 ${listClassName}`}>
+        {links.map(([label, href]) => (
+          <li key={href}><Link href={href} className="inline-block py-1.5 transition hover:translate-x-0.5 hover:text-white">{label}</Link></li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -90,9 +94,7 @@ export function FloatingActions() {
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-center gap-4">
       <a href={whatsappUrl(consultationMessage('Website enquiry'))} target="_blank" rel="noopener noreferrer" className="float-bob grid h-14 w-14 place-items-center rounded-full bg-[#25d366]/80 text-white shadow-lg backdrop-blur-sm transition hover:scale-105 hover:bg-[#25d366]" aria-label="Chat with Accelise on WhatsApp" data-cta="floating-whatsapp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-7 w-7">
-          <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.21 4.24-9.45 9.45-9.45 2.52 0 4.9.99 6.68 2.77a9.38 9.38 0 0 1 2.76 6.68c0 5.21-4.24 9.45-9.45 9.45zm8.04-17.49A11.3 11.3 0 0 0 12.05.67C5.78.67.68 5.77.68 12.04c0 2 .52 3.96 1.52 5.68L.58 23.33l5.73-1.5a11.33 11.33 0 0 0 5.43 1.38h.01c6.27 0 11.37-5.1 11.37-11.37 0-3.04-1.18-5.9-3.33-8.04z" />
-        </svg>
+        <WhatsAppIcon className="h-7 w-7" />
       </a>
       <a href={siteConfig.phoneHref} className="float-bob-delayed grid h-14 w-14 place-items-center rounded-full border-2 border-[#f5a524] bg-[#5b1622]/80 text-[#f5a524] shadow-lg backdrop-blur-sm transition hover:scale-105 hover:bg-[#5b1622]" aria-label={`Call Accelise on ${siteConfig.phone}`} data-cta="floating-call">
         <Phone className="h-6 w-6" fill="currentColor" strokeWidth={0} />
@@ -279,7 +281,7 @@ export function CTASection({ title = 'Ready to discuss your website?', text = 'S
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="/contact" cta="section-contact">Request Exact Quote</ButtonLink>
           <a href={whatsappUrl(consultationMessage('Website project'))} data-cta="section-whatsapp" className="inline-flex items-center rounded-md border border-white/30 px-5 py-3 text-sm font-extrabold hover:bg-white/10">
-            <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp
+            <WhatsAppIcon className="mr-2 h-4 w-4" /> WhatsApp
           </a>
         </div>
       </div>
@@ -365,7 +367,7 @@ export function ContactStrip() {
     <div className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
       <a href={siteConfig.phoneHref} className="flex min-w-0 items-center gap-3 font-bold text-[#0b1b3a] hover:text-[#315eef]"><Phone className="h-5 w-5 shrink-0 text-[#315eef]" /> {siteConfig.phone}</a>
       <a href={siteConfig.phoneAltHref} className="flex min-w-0 items-center gap-3 font-bold text-[#0b1b3a] hover:text-[#315eef]"><Phone className="h-5 w-5 shrink-0 text-[#315eef]" /> {siteConfig.phoneAlt}</a>
-      <a href={whatsappUrl(consultationMessage('Quick enquiry'))} target="_blank" rel="noopener noreferrer" className="flex min-w-0 items-center gap-3 font-bold text-[#0b1b3a] hover:text-[#315eef]"><MessageCircle className="h-5 w-5 shrink-0 text-[#315eef]" /> WhatsApp</a>
+      <a href={whatsappUrl(consultationMessage('Quick enquiry'))} target="_blank" rel="noopener noreferrer" className="flex min-w-0 items-center gap-3 font-bold text-[#0b1b3a] hover:text-[#315eef]"><WhatsAppIcon className="h-5 w-5 shrink-0 text-[#19a974]" /> WhatsApp</a>
       <a href={siteConfig.emailHref} className="flex min-w-0 items-center gap-3 font-bold text-[#0b1b3a] hover:text-[#315eef]"><Mail className="h-5 w-5 shrink-0 text-[#315eef]" /> <span className="break-all">{siteConfig.email}</span></a>
     </div>
   );

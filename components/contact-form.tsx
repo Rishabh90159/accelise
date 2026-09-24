@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { CheckCircle2, Loader2, MessageCircle, Send } from 'lucide-react';
+import { CheckCircle2, Loader2, Send } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/whatsapp-icon';
 import { services, siteConfig, whatsappUrl } from '@/lib/content';
 
 // FormSubmit relays the enquiry to our inbox; the site is a static export with no backend of its own.
@@ -85,7 +86,7 @@ export function ContactForm() {
         <h2 className="text-2xl font-extrabold text-[#0b1b3a]">Thank you! Your enquiry has been sent.</h2>
         <p className="max-w-md text-slate-600">Our team will get back to you within one business day. For a quicker reply, message us on WhatsApp.</p>
         <div className="flex flex-wrap justify-center gap-3">
-          <a href={whatsappUrl(`Hi ${siteConfig.name}, I just sent an enquiry through your website.`)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-[#19a974] px-5 py-3 text-sm font-extrabold text-white"><MessageCircle className="mr-2 h-4 w-4" /> WhatsApp us</a>
+          <a href={whatsappUrl(`Hi ${siteConfig.name}, I just sent an enquiry through your website.`)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-md bg-[#19a974] px-5 py-3 text-sm font-extrabold text-white"><WhatsAppIcon className="mr-2 h-4 w-4" /> WhatsApp us</a>
           <button type="button" onClick={() => setStatus('idle')} className="rounded-md border border-slate-300 px-5 py-3 text-sm font-extrabold text-[#0b1b3a] hover:border-[#315eef]">Send another enquiry</button>
         </div>
       </div>

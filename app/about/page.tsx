@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs, CTASection, ListBlock, PageHero, PageVisual, SectionHeading } from '@/components/site';
-import { technologies, values } from '@/lib/content';
+import { values } from '@/lib/content';
 
-export const metadata: Metadata = { title: 'About Accelise', description: 'Learn about the Accelise team, services, approach, technology stack and service coverage.', alternates: { canonical: '/about' } };
+export const metadata: Metadata = { title: 'About Accelise', description: 'Learn about the Accelise team, services, approach and service coverage.', alternates: { canonical: '/about' } };
 
 export default function AboutPage() {
   return (
@@ -15,8 +15,6 @@ export default function AboutPage() {
         <div className="container grid gap-6 lg:grid-cols-2">
           <div className="rounded-lg border border-slate-200 p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md"><h2 className="text-2xl font-extrabold text-[#0b1b3a]">Who we work with</h2><p className="mt-4 leading-7 text-slate-600">Our team works with businesses, manufacturers, exporters, service companies, creative professionals and local brands that need a credible website and practical enquiry flow.</p></div>
           <div className="rounded-lg border border-slate-200 p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md"><h2 className="text-2xl font-extrabold text-[#0b1b3a]">Our approach</h2><p className="mt-4 leading-7 text-slate-600">We start with business goals, buyer questions, content readiness and required CTAs. The build stays lean unless a feature directly improves credibility, enquiries or maintainability.</p></div>
-          <ListBlock title="Technologies used" items={technologies} />
-          <ListBlock title="Team capabilities" items={['Project planning and communication', 'Frontend interface development', 'Backend and integration support', 'Quality assurance and launch checks']} />
         </div>
       </section>
       <section className="section">
