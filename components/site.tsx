@@ -103,7 +103,7 @@ export function FloatingActions() {
 
 export function ButtonLink({ href, children, variant = 'primary', cta }: { href: string; children: React.ReactNode; variant?: 'primary' | 'secondary' | 'dark'; cta?: string }) {
   const classes = variant === 'secondary' ? 'border border-slate-300 bg-white text-[#0b1b3a] hover:border-[#315eef]' : variant === 'dark' ? 'bg-[#0b1b3a] text-white hover:bg-[#122b59]' : 'bg-[#315eef] text-white hover:bg-[#244bd4]';
-  return <Link href={href} data-cta={cta} className={`inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-extrabold shadow-sm transition ${classes}`}>{children}<ArrowRight className="ml-2 h-4 w-4" /></Link>;
+  return <Link href={href} data-cta={cta} className={`group/btn inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-extrabold shadow-sm transition ${classes}`}>{children}<ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" /></Link>;
 }
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -141,16 +141,26 @@ export function PageHero({ eyebrow, title, text, children }: { eyebrow: string; 
 
 export function AgencyVisual() {
   return (
-    <div className="rounded-md bg-[#0b1b3a] p-5 text-white">
+    <div className="group/panel rounded-md bg-[#0b1b3a] p-5 text-white transition duration-500 hover:shadow-[0_0_40px_-10px_rgba(49,94,239,0.6)]">
       <div className="flex items-center justify-between border-b border-white/15 pb-4">
         <span className="text-sm font-bold">One team. Complete website delivery.</span>
-        <span className="rounded bg-white/10 px-2 py-1 text-xs">Team workflow</span>
+        <span className="flex items-center gap-2 rounded bg-white/10 px-2 py-1 text-xs">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#19a974] opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-[#19a974]" />
+          </span>
+          Team workflow
+        </span>
       </div>
       <div className="mt-5 grid gap-3">
         {['Strategy and structure', 'UI and frontend development', 'Backend and integrations', 'Testing and launch support'].map((item, index) => (
-          <div key={item} className="flex items-center gap-3 rounded-md bg-white/8 p-3">
-            <span className="grid h-8 w-8 place-items-center rounded bg-[#315eef] text-sm font-bold">{index + 1}</span>
-            <span className="text-sm">{item}</span>
+          // Outer layer cascades in when the panel is hovered; inner layer reacts to the row itself without delay.
+          <div key={item} className="transition-transform duration-500 ease-out group-hover/panel:translate-x-1.5" style={{ transitionDelay: `${index * 80}ms` }}>
+            <div className="group/row flex cursor-default items-center gap-3 rounded-md border border-transparent bg-white/8 p-3 transition duration-300 hover:translate-x-1 hover:border-[#8fb0ff]/50 hover:bg-white/15">
+              <span className="grid h-8 w-8 place-items-center rounded bg-[#315eef] text-sm font-bold transition duration-300 group-hover/row:scale-110 group-hover/row:rotate-6 group-hover/row:shadow-[0_0_16px_rgba(49,94,239,0.8)]">{index + 1}</span>
+              <span className="text-sm">{item}</span>
+              <ArrowRight className="ml-auto h-4 w-4 -translate-x-2 text-[#8fb0ff] opacity-0 transition duration-300 group-hover/row:translate-x-0 group-hover/row:opacity-100" />
+            </div>
           </div>
         ))}
       </div>
@@ -288,7 +298,7 @@ export function ServiceCards({ limit }: { limit?: number }) {
             <Icon className="h-8 w-8 text-[#315eef]" />
             <h3 className="mt-4 text-lg font-extrabold text-[#0b1b3a]">{service.shortTitle}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">{service.summary}</p>
-            <span className="mt-4 inline-flex items-center text-sm font-bold text-[#315eef]">Learn more <ArrowRight className="ml-1 h-4 w-4" /></span>
+            <span className="mt-4 inline-flex items-center text-sm font-bold text-[#315eef]">Learn more <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" /></span>
           </Link>
         );
       })}
@@ -316,10 +326,8 @@ export function ProjectCards({ limit }: { limit?: number }) {
             <p className="mt-3 text-sm leading-6 text-slate-600"><strong>Challenge:</strong> {project.problem}</p>
             <p className="mt-2 text-sm leading-6 text-slate-600"><strong>Work completed:</strong> {project.solution}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.features.slice(0, 3).map((feature) => <span key={feature} className="rounded bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">{feature}</span>)}</div>
-            <p className="mt-4 text-xs font-bold text-slate-500">Tech: {project.technology.join(', ')}</p>
-            <div className="mt-5 flex flex-wrap items-center gap-4 text-sm font-bold text-[#315eef]">
-              <Link href={`/case-studies/${project.slug}`}>Case study</Link>
-              {project.liveUrl ? (
+            {project.liveUrl ? (
+              <div className="mt-5 text-sm font-bold">
                 <a
                   href={project.liveUrl}
                   target="_blank"
@@ -328,8 +336,8 @@ export function ProjectCards({ limit }: { limit?: number }) {
                 >
                   View Website
                 </a>
-              ) : null}
-            </div>
+              </div>
+            ) : null}
           </div>
         </article>
       ))}

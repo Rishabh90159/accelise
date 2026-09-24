@@ -53,7 +53,7 @@ export default function PackagesPage() {
           </table>
         </div>
         <div className="container mt-6 rounded-lg border border-slate-200 bg-white p-6 text-sm leading-7 text-slate-700 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
-          <p>Final pricing depends on requirements. Domain, hosting, premium services, backend systems, payment gateways, third-party tools, content and images are quoted or clarified separately before project commencement.</p>
+          <p>Domain and hosting are included with every package. Final pricing depends on requirements; premium services, backend systems, payment gateways, third-party tools, content and images are quoted or clarified separately before project commencement.</p>
         </div>
       </section>
       <CTASection title="Request an exact website quote" />

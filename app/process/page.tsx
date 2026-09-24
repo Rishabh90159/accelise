@@ -19,9 +19,9 @@ export default function ProcessPage() {
           <ListBlock title="Communication process" items={['One primary project thread for decisions and feedback', 'Milestone updates around scope, design, development and launch', 'Consolidated feedback preferred during revision rounds']} />
           <ListBlock title="Revisions" items={['Revision limits follow the selected package', 'Changes are tracked against approved scope', 'New pages or major feature changes are estimated separately']} />
           <ListBlock title="Testing checklist" items={['Mobile, tablet and desktop layout review', 'Navigation, internal links and CTA checks', 'Form validation, WhatsApp and email link checks', 'Basic metadata and sitemap checks']} />
-          <ListBlock title="Launch requirements" items={['Final content approval', 'Domain or hosting access where required', 'Confirmed phone, WhatsApp, email and map details', 'Approved package and payment milestones']} />
+          <ListBlock title="Launch requirements" items={['Final content approval', 'Existing domain access, if you already own one', 'Confirmed phone, WhatsApp, email and map details', 'Approved package and payment milestones']} />
           <ListBlock title="Post-launch support" items={['Minor launch fixes during the package support window', 'Guidance for future content updates', 'Separate estimates for new features or integrations']} />
-          <ListBlock title="What the client should provide" items={['Business overview and service details', 'Logo, brand colors or visual references if available', 'Page content, product details and real images', 'Domain, hosting and third-party access when needed', 'Timely review feedback during revision rounds']} />
+          <ListBlock title="What the client should provide" items={['Business overview and service details', 'Logo, brand colors or visual references if available', 'Page content, product details and real images', 'Existing domain or third-party access, if any', 'Timely review feedback during revision rounds']} />
         </div>
       </section>
       <CTASection title="Start with a requirement discussion" />

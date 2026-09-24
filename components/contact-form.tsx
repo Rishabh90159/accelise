@@ -70,7 +70,8 @@ export function ContactForm() {
       if (!response.ok || String(result.success) !== 'true') throw new Error(result.message ?? 'Request failed');
       setStatus('sent');
       setForm(initial);
-    } catch {
+    } catch (error) {
+      console.error('Enquiry form failed to send:', error);
       setStatus('error');
     }
   }

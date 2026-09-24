@@ -26,7 +26,7 @@ export default function IndustriesPage() {
                 <Icon className="h-8 w-8 text-[#315eef]" />
                 <h2 className="mt-4 text-lg font-extrabold text-[#0b1b3a]">{industry.title}</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{industry.summary}</p>
-                <span className="mt-4 inline-flex items-center text-sm font-bold text-[#315eef]">Learn more <ArrowRight className="ml-1 h-4 w-4" /></span>
+                <span className="mt-4 inline-flex items-center text-sm font-bold text-[#315eef]">Learn more <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" /></span>
               </Link>
             );
           })}
