@@ -40,7 +40,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       ) : null}
       <section className="section">
         <div className="container grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <Image src={project.image} alt={`${project.name} main website screenshot`} width={900} height={540} className="rounded-lg border border-slate-200 bg-white shadow-sm" />
+          {project.liveUrl ? (
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit the ${project.name} website`} className="block self-start overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:shadow-lg">
+              <Image src={project.image} alt={`${project.name} main website screenshot`} width={900} height={540} className="h-auto w-full" />
+            </a>
+          ) : (
+            <Image src={project.image} alt={`${project.name} main website screenshot`} width={900} height={540} className="rounded-lg border border-slate-200 bg-white shadow-sm" />
+          )}
           <div className="grid gap-5">
             <ListBlock title="Project summary" items={[project.projectType, project.solution]} />
             <ListBlock title="Business context" items={[project.context]} />

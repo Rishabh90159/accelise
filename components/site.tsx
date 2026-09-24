@@ -311,7 +311,13 @@ export function ProjectCards({ limit }: { limit?: number }) {
     <div className="grid gap-6 md:grid-cols-2">
       {visible.map((project) => (
         <article key={project.slug} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-          <Image src={project.image} alt={`${project.name} website screenshot`} width={720} height={420} className="h-56 w-full object-cover" />
+          {project.liveUrl ? (
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit the ${project.name} website`} className="block overflow-hidden">
+              <Image src={project.image} alt={`${project.name} website screenshot`} width={720} height={420} className="h-56 w-full object-cover object-top transition duration-300 hover:scale-105" />
+            </a>
+          ) : (
+            <Image src={project.image} alt={`${project.name} website screenshot`} width={720} height={420} className="h-56 w-full object-cover" />
+          )}
           <div className="p-6">
             <p className="text-sm font-bold text-[#315eef]">{project.industry}</p>
             <p className="mt-1 text-xs font-extrabold uppercase tracking-[0.12em] text-slate-500">{project.projectType}</p>
