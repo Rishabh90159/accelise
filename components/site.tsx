@@ -122,20 +122,25 @@ export function SectionHeading({ eyebrow, title, text }: { eyebrow?: string; tit
   );
 }
 
-export function PageHero({ eyebrow, title, text, children }: { eyebrow: string; title: string; text: string; children?: React.ReactNode }) {
+// `bare` renders children without the framed panel (e.g. a form that has its own card); `actions` replaces the default CTAs.
+export function PageHero({ eyebrow, title, text, children, actions, bare = false }: { eyebrow: string; title: string; text: string; children?: React.ReactNode; actions?: React.ReactNode; bare?: boolean }) {
   return (
     <section className="soft-grid border-b border-slate-200 bg-white">
-      <div className="container grid gap-8 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div className={`container grid gap-8 lg:grid-cols-[1.1fr_0.9fr] ${bare ? 'py-10 lg:items-start' : 'py-16 lg:items-center'}`}>
         <div>
           <Eyebrow>{eyebrow}</Eyebrow>
           <h1 className="mt-4 max-w-4xl text-3xl font-extrabold leading-tight text-[#0b1b3a] md:text-4xl">{title}</h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">{text}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href="/contact" cta="hero-consultation">Get a Free Consultation</ButtonLink>
-            <ButtonLink href="/portfolio" variant="secondary" cta="hero-work">View Our Work</ButtonLink>
+          <div className="mt-8">
+            {actions ?? (
+              <div className="flex flex-wrap gap-3">
+                <ButtonLink href="/contact" cta="hero-consultation">Get a Free Consultation</ButtonLink>
+                <ButtonLink href="/portfolio" variant="secondary" cta="hero-work">View Our Work</ButtonLink>
+              </div>
+            )}
           </div>
         </div>
-        <div className="rounded-lg border border-slate-200 bg-white p-3 shadow-xl">{children ?? <PageVisual />}</div>
+        {bare ? <div className="rounded-lg shadow-xl">{children}</div> : <div className="rounded-lg border border-slate-200 bg-white p-3 shadow-xl">{children ?? <PageVisual />}</div>}
       </div>
     </section>
   );
