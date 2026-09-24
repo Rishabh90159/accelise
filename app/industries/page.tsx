@@ -22,7 +22,7 @@ export default function IndustriesPage() {
           {industries.map((industry) => {
             const Icon = industry.icon;
             return (
-              <Link href={`/industries/${industry.slug}`} key={industry.slug} className="group rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <Link href={`/industries/${industry.slug}`} key={industry.slug} className="group rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#8fb0ff] hover:shadow-lg">
                 <Icon className="h-8 w-8 text-[#315eef]" />
                 <h2 className="mt-4 text-lg font-extrabold text-[#0b1b3a]">{industry.title}</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{industry.summary}</p>

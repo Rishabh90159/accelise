@@ -31,7 +31,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           <ListBlock title="Lead-generation opportunities" items={industry.leadOpportunities} />
           <ListBlock title="Relevant features" items={industry.features} />
         </div>
-        <div className="container mt-6 rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="container mt-6 rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
           <h2 className="text-xl font-extrabold text-[#0b1b3a]">Example enquiry flow</h2>
           <p className="mt-3 leading-7 text-slate-600">{industry.enquiryFlow}</p>
         </div>

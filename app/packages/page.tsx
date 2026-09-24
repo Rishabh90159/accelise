@@ -15,7 +15,7 @@ export default function PackagesPage() {
       <section className="section bg-white">
         <div className="container grid gap-5 lg:grid-cols-3">
           {packages.map((pkg) => (
-            <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" key={pkg.name}>
+            <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={pkg.name}>
               <h2 className="text-2xl font-extrabold text-[#0b1b3a]">{pkg.name}</h2>
               <p className="mt-3 text-2xl font-extrabold text-[#315eef]">{pkg.price}</p>
               <p className="mt-2 text-slate-600">{pkg.fit}</p>
@@ -52,7 +52,7 @@ export default function PackagesPage() {
             </tbody>
           </table>
         </div>
-        <div className="container mt-6 rounded-lg border border-slate-200 bg-white p-6 text-sm leading-7 text-slate-700 shadow-sm">
+        <div className="container mt-6 rounded-lg border border-slate-200 bg-white p-6 text-sm leading-7 text-slate-700 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
           <p>Final pricing depends on requirements. Domain, hosting, premium services, backend systems, payment gateways, third-party tools, content and images are quoted or clarified separately before project commencement.</p>
         </div>
       </section>

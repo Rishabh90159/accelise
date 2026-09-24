@@ -41,7 +41,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <section className="section">
         <div className="container grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           {project.liveUrl ? (
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit the ${project.name} website`} className="block self-start overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:shadow-lg">
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit the ${project.name} website`} className="block self-start overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-[#8fb0ff] hover:shadow-lg">
               <Image src={project.image} alt={`${project.name} main website screenshot`} width={900} height={540} className="h-auto w-full" />
             </a>
           ) : (

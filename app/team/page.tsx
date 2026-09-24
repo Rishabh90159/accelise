@@ -30,7 +30,7 @@ export default function TeamPage() {
           />
           <div className="grid gap-6 md:grid-cols-2">
             {teamMembers.map((member) => (
-              <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md" key={member.linkedin}>
+              <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={member.linkedin}>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <TeamPortrait initials={member.initials} image={member.image} name={member.name} imageOrigin={member.imageOrigin} imageZoom={member.imageZoom} size="lg" />
@@ -64,7 +64,7 @@ export default function TeamPage() {
         </div>
       </section>
       <section className="section">
-        <div className="container rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="container rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
           <h2 className="text-2xl font-extrabold text-[#0b1b3a]">How we work together</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-5">
             {['Project discovery and planning', 'UI and frontend implementation', 'Backend and integration support', 'Quality assurance and responsive testing', 'Client review and launch'].map((item, index) => (

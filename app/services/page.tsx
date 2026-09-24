@@ -19,7 +19,7 @@ export default function ServicesPage() {
       <section className="section">
         <div className="container grid gap-6 lg:grid-cols-2">
           {services.map((service) => (
-            <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" key={service.slug}>
+            <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={service.slug}>
               <h2 className="text-2xl font-extrabold text-[#0b1b3a]">{service.title}</h2>
               <p className="mt-3 leading-7 text-slate-600">{service.problem}</p>
               <p className="mt-3 text-sm font-bold text-slate-700">Suitable for: {service.suitableFor}</p>

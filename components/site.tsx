@@ -77,6 +77,7 @@ export function Footer() {
           <p className="font-bold">Contact</p>
           <div className="mt-4 grid gap-3 text-sm text-slate-300">
             <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
+            <a href={siteConfig.phoneAltHref}>{siteConfig.phoneAlt}</a>
             <a href={siteConfig.emailHref}>{siteConfig.email}</a>
             <a href={whatsappUrl(consultationMessage('Website enquiry'))}>WhatsApp</a>
           </div>
@@ -99,12 +100,14 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
 
 export function FloatingActions() {
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
-      <a href={whatsappUrl(consultationMessage('Website enquiry'))} className="grid h-12 w-12 place-items-center rounded-full bg-[#19a974] text-white shadow-lg" aria-label="Contact on WhatsApp" data-cta="floating-whatsapp">
-        <MessageCircle className="h-5 w-5" />
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-center gap-4">
+      <a href={whatsappUrl(consultationMessage('Website enquiry'))} target="_blank" rel="noopener noreferrer" className="float-bob grid h-14 w-14 place-items-center rounded-full bg-[#25d366]/80 text-white shadow-lg backdrop-blur-sm transition hover:scale-105 hover:bg-[#25d366]" aria-label="Chat with Accelise on WhatsApp" data-cta="floating-whatsapp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-7 w-7">
+          <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.21 4.24-9.45 9.45-9.45 2.52 0 4.9.99 6.68 2.77a9.38 9.38 0 0 1 2.76 6.68c0 5.21-4.24 9.45-9.45 9.45zm8.04-17.49A11.3 11.3 0 0 0 12.05.67C5.78.67.68 5.77.68 12.04c0 2 .52 3.96 1.52 5.68L.58 23.33l5.73-1.5a11.33 11.33 0 0 0 5.43 1.38h.01c6.27 0 11.37-5.1 11.37-11.37 0-3.04-1.18-5.9-3.33-8.04z" />
+        </svg>
       </a>
-      <a href={siteConfig.phoneHref} className="grid h-12 w-12 place-items-center rounded-full bg-[#0b1b3a] text-white shadow-lg sm:hidden" aria-label="Call Accelise" data-cta="floating-call">
-        <Phone className="h-5 w-5" />
+      <a href={siteConfig.phoneHref} className="float-bob-delayed grid h-14 w-14 place-items-center rounded-full border-2 border-[#f5a524] bg-[#5b1622]/80 text-[#f5a524] shadow-lg backdrop-blur-sm transition hover:scale-105 hover:bg-[#5b1622]" aria-label={`Call Accelise on ${siteConfig.phone}`} data-cta="floating-call">
+        <Phone className="h-6 w-6" fill="currentColor" strokeWidth={0} />
       </a>
     </div>
   );
@@ -221,7 +224,7 @@ export function TeamPreview() {
       {teamMembers.map((member) => (
         <Link
           href="/team"
-          className="group flex flex-col items-center rounded-xl border border-slate-200 bg-white px-5 pb-6 pt-8 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#315eef]/40 hover:shadow-lg"
+          className="group flex flex-col items-center rounded-xl border border-slate-200 bg-white px-5 pb-6 pt-8 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#8fb0ff] hover:shadow-lg"
           key={member.name}
         >
           <TeamPortrait initials={member.initials} image={member.image} name={member.name} imageOrigin={member.imageOrigin} imageZoom={member.imageZoom} />
@@ -256,7 +259,7 @@ export function FAQSection({ items = faqs }: { items?: FAQ[] }) {
         <SectionHeading eyebrow="Questions" title="Helpful answers before we talk" />
         <div className="mx-auto grid max-w-4xl gap-4">
           {items.map((item) => (
-            <details key={item.question} className="rounded-lg border border-slate-200 bg-slate-50 p-5">
+            <details key={item.question} className="rounded-lg border border-slate-200 bg-slate-50 p-5 transition hover:border-[#8fb0ff] hover:shadow-md">
               <summary className="cursor-pointer font-bold text-[#0b1b3a]">{item.question}</summary>
               <p className="mt-3 leading-7 text-slate-600">{item.answer}</p>
             </details>
@@ -293,7 +296,7 @@ export function ServiceCards({ limit }: { limit?: number }) {
       {visible.map((service) => {
         const Icon = service.icon;
         return (
-          <Link href={`/services/${service.slug}`} key={service.slug} className="group rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <Link href={`/services/${service.slug}`} key={service.slug} className="group rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-[#8fb0ff] hover:shadow-lg">
             <Icon className="h-8 w-8 text-[#315eef]" />
             <h3 className="mt-4 text-lg font-extrabold text-[#0b1b3a]">{service.shortTitle}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">{service.summary}</p>
@@ -310,7 +313,7 @@ export function ProjectCards({ limit }: { limit?: number }) {
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {visible.map((project) => (
-        <article key={project.slug} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+        <article key={project.slug} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
           {project.liveUrl ? (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit the ${project.name} website`} className="block overflow-hidden">
               <Image src={project.image} alt={`${project.name} website screenshot`} width={720} height={420} className="h-56 w-full object-cover object-top transition duration-300 hover:scale-105" />
@@ -348,7 +351,7 @@ export function ProjectCards({ limit }: { limit?: number }) {
 
 export function ListBlock({ title, items }: { title: string; items: string[] }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
       <h2 className="text-xl font-extrabold text-[#0b1b3a]">{title}</h2>
       <ul className="mt-4 grid gap-3">
         {items.map((item) => <li className="flex gap-3 text-slate-600" key={item}><CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#315eef]" /><span>{item}</span></li>)}
@@ -363,7 +366,7 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
 
 export function ContactStrip() {
   return (
-    <div className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm md:grid-cols-3">
+    <div className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm md:grid-cols-3 transition hover:border-[#8fb0ff] hover:shadow-md">
       <a href={siteConfig.phoneHref} className="flex items-center gap-3 font-bold text-[#0b1b3a]"><Phone className="h-5 w-5 text-[#315eef]" /> {siteConfig.phone}</a>
       <a href={whatsappUrl(consultationMessage('Quick enquiry'))} className="flex items-center gap-3 font-bold text-[#0b1b3a]"><MessageCircle className="h-5 w-5 text-[#315eef]" /> WhatsApp</a>
       <a href={siteConfig.emailHref} className="flex items-center gap-3 font-bold text-[#0b1b3a]"><Mail className="h-5 w-5 text-[#315eef]" /> {siteConfig.email}</a>

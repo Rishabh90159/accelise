@@ -13,8 +13,8 @@ export default function AboutPage() {
       </PageHero>
       <section className="section bg-white">
         <div className="container grid gap-6 lg:grid-cols-2">
-          <div className="rounded-lg border border-slate-200 p-6 shadow-sm"><h2 className="text-2xl font-extrabold text-[#0b1b3a]">Who we work with</h2><p className="mt-4 leading-7 text-slate-600">Our team works with businesses, manufacturers, exporters, service companies, creative professionals and local brands that need a credible website and practical enquiry flow.</p></div>
-          <div className="rounded-lg border border-slate-200 p-6 shadow-sm"><h2 className="text-2xl font-extrabold text-[#0b1b3a]">Our approach</h2><p className="mt-4 leading-7 text-slate-600">We start with business goals, buyer questions, content readiness and required CTAs. The build stays lean unless a feature directly improves credibility, enquiries or maintainability.</p></div>
+          <div className="rounded-lg border border-slate-200 p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md"><h2 className="text-2xl font-extrabold text-[#0b1b3a]">Who we work with</h2><p className="mt-4 leading-7 text-slate-600">Our team works with businesses, manufacturers, exporters, service companies, creative professionals and local brands that need a credible website and practical enquiry flow.</p></div>
+          <div className="rounded-lg border border-slate-200 p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md"><h2 className="text-2xl font-extrabold text-[#0b1b3a]">Our approach</h2><p className="mt-4 leading-7 text-slate-600">We start with business goals, buyer questions, content readiness and required CTAs. The build stays lean unless a feature directly improves credibility, enquiries or maintainability.</p></div>
           <ListBlock title="Technologies used" items={technologies} />
           <ListBlock title="Team capabilities" items={['Project planning and communication', 'Frontend interface development', 'Backend and integration support', 'Quality assurance and launch checks']} />
         </div>
@@ -23,7 +23,7 @@ export default function AboutPage() {
         <div className="container">
           <SectionHeading eyebrow="Values" title="Practical, transparent and conversion-aware" />
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {values.map((value) => { const Icon = value.icon; return <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm" key={value.title}><Icon className="h-7 w-7 text-[#315eef]" /><h3 className="mt-4 font-extrabold text-[#0b1b3a]">{value.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{value.text}</p></div>; })}
+            {values.map((value) => { const Icon = value.icon; return <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={value.title}><Icon className="h-7 w-7 text-[#315eef]" /><h3 className="mt-4 font-extrabold text-[#0b1b3a]">{value.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{value.text}</p></div>; })}
           </div>
         </div>
       </section>

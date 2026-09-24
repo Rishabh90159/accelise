@@ -13,7 +13,7 @@ export default function ProcessPage() {
       </PageHero>
       <section className="section">
         <div className="container grid gap-5 md:grid-cols-2">
-          {processSteps.map((step, index) => <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" key={step.title}><span className="text-sm font-extrabold text-[#315eef]">{String(index + 1).padStart(2, '0')}</span><h2 className="mt-2 text-xl font-extrabold text-[#0b1b3a]">{step.title}</h2><div className="mt-4 grid gap-3 text-sm leading-6 text-slate-700"><p><strong>Our team:</strong> {step.team}</p><p><strong>Client provides:</strong> {step.client}</p><p><strong>Deliverable:</strong> {step.deliverable}</p><p><strong>Approval point:</strong> {step.approval}</p></div></article>)}
+          {processSteps.map((step, index) => <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={step.title}><span className="text-sm font-extrabold text-[#315eef]">{String(index + 1).padStart(2, '0')}</span><h2 className="mt-2 text-xl font-extrabold text-[#0b1b3a]">{step.title}</h2><div className="mt-4 grid gap-3 text-sm leading-6 text-slate-700"><p><strong>Our team:</strong> {step.team}</p><p><strong>Client provides:</strong> {step.client}</p><p><strong>Deliverable:</strong> {step.deliverable}</p><p><strong>Approval point:</strong> {step.approval}</p></div></article>)}
         </div>
         <div className="container mt-8 grid gap-6 lg:grid-cols-2">
           <ListBlock title="Communication process" items={['One primary project thread for decisions and feedback', 'Milestone updates around scope, design, development and launch', 'Consolidated feedback preferred during revision rounds']} />

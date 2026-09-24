@@ -16,7 +16,7 @@ export default function ContactPage() {
         <div className="container grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="grid gap-5">
             <ContactStrip />
-            <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
               <h2 className="text-xl font-extrabold text-[#0b1b3a]">Availability</h2>
               <p className="mt-3 leading-7 text-slate-600">Based in {siteConfig.location}, available for India and international website projects. Work email: {siteConfig.email}. Expected first response: within one business day when project details are clear.</p>
               <p className="mt-3 leading-7 text-slate-600">Team availability depends on current project schedule, selected package, required integrations and content readiness.</p>
