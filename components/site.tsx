@@ -354,10 +354,11 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
 
 export function ContactStrip() {
   return (
-    <div className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm md:grid-cols-3 transition hover:border-[#8fb0ff] hover:shadow-md">
-      <a href={siteConfig.phoneHref} className="flex items-center gap-3 font-bold text-[#0b1b3a]"><Phone className="h-5 w-5 text-[#315eef]" /> {siteConfig.phone}</a>
-      <a href={whatsappUrl(consultationMessage('Quick enquiry'))} className="flex items-center gap-3 font-bold text-[#0b1b3a]"><MessageCircle className="h-5 w-5 text-[#315eef]" /> WhatsApp</a>
-      <a href={siteConfig.emailHref} className="flex items-center gap-3 font-bold text-[#0b1b3a]"><Mail className="h-5 w-5 text-[#315eef]" /> {siteConfig.email}</a>
+    <div className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
+      <a href={siteConfig.phoneHref} className="flex min-w-0 items-center gap-3 font-bold text-[#0b1b3a] hover:text-[#315eef]"><Phone className="h-5 w-5 shrink-0 text-[#315eef]" /> {siteConfig.phone}</a>
+      <a href={siteConfig.phoneAltHref} className="flex min-w-0 items-center gap-3 font-bold text-[#0b1b3a] hover:text-[#315eef]"><Phone className="h-5 w-5 shrink-0 text-[#315eef]" /> {siteConfig.phoneAlt}</a>
+      <a href={whatsappUrl(consultationMessage('Quick enquiry'))} target="_blank" rel="noopener noreferrer" className="flex min-w-0 items-center gap-3 font-bold text-[#0b1b3a] hover:text-[#315eef]"><MessageCircle className="h-5 w-5 shrink-0 text-[#315eef]" /> WhatsApp</a>
+      <a href={siteConfig.emailHref} className="flex min-w-0 items-center gap-3 font-bold text-[#0b1b3a] hover:text-[#315eef]"><Mail className="h-5 w-5 shrink-0 text-[#315eef]" /> <span className="break-all">{siteConfig.email}</span></a>
     </div>
   );
 }
