@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, ChevronRight, Mail, Menu, MessageCircle, Phone } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ChevronRight, Mail, MessageCircle, Phone } from 'lucide-react';
+import { MobileMenu } from '@/components/mobile-menu';
 import { faqs, industries, navItems, projects, services, siteConfig, teamMembers, whatsappUrl, consultationMessage, type FAQ } from '@/lib/content';
 
 export function Header() {
@@ -19,20 +20,7 @@ export function Header() {
             {navItems.map((item) => <Link className="link-underline" href={item.href} key={item.href}>{item.label}</Link>)}
           </div>
           <div className="flex items-center gap-2">
-            <a className="hidden rounded-md border border-slate-300 px-4 py-2 text-sm font-bold text-[#0b1b3a] transition hover:border-[#315eef] md:inline-flex" href={siteConfig.phoneHref} data-cta="header-call">
-              <Phone className="mr-2 h-4 w-4" /> Call
-            </a>
-            <a className="rounded-md bg-[#315eef] px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#244bd4]" href={whatsappUrl(consultationMessage('Website project'))} data-cta="header-whatsapp">
-              <MessageCircle className="mr-2 inline h-4 w-4" /> WhatsApp
-            </a>
-            <details className="group relative xl:hidden">
-              <summary className="list-none rounded-md border border-slate-300 p-2" aria-label="Open navigation menu">
-                <Menu className="h-5 w-5" />
-              </summary>
-              <div className="absolute right-0 top-12 grid w-60 gap-1 rounded-lg border border-slate-200 bg-white p-3 text-sm font-bold text-slate-700 shadow-xl">
-                {navItems.map((item) => <Link className="rounded-md px-3 py-2 hover:bg-slate-100" href={item.href} key={item.href}>{item.label}</Link>)}
-              </div>
-            </details>
+            <MobileMenu />
           </div>
         </nav>
       </header>
