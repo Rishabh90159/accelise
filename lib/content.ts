@@ -35,7 +35,7 @@ export const siteConfig = {
   whatsapp: '919133600905',
   email: 'team@accelise.com',
   emailHref: 'mailto:team@accelise.com',
-  location: 'Gurgaon, India',
+  location: 'NCR Gurgaon & Hyderabad, India',
   serviceArea: 'India and international clients',
   portfolioUrl: 'https://rishabh-gautam-portfolio.vercel.app/',
   baseUrl: 'https://www.accelise.com',
@@ -262,7 +262,7 @@ export const processSteps = [
 ];
 
 export const faqs: FAQ[] = [
-  { question: 'Do you build websites for businesses outside Gurgaon?', answer: 'Yes. Accelise works with businesses across India and can also support international clients remotely.' },
+  { question: 'Do you build websites for businesses outside NCR Gurgaon and Hyderabad?', answer: 'Yes. Accelise works with businesses across India and can also support international clients remotely.' },
   { question: 'Are domain and hosting included?', answer: 'Yes. Domain and hosting are included with our website packages, so you do not need to buy or set up anything separately. We register the domain, host the website and connect everything before launch. If you already own a domain, we can use that instead.' },
   { question: 'Can the website be upgraded later?', answer: 'Yes. A website can start simple and later connect to Formspree, Web3Forms, CMS, APIs or ecommerce systems.' },
   { question: 'Who works on the projects?', answer: 'Our web-development team combines project communication, frontend development, backend engineering and quality assurance based on the approved scope.' },

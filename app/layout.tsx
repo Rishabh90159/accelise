@@ -68,7 +68,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     founder: siteConfig.founder,
     email: siteConfig.email,
     telephone: siteConfig.phone,
-    address: { '@type': 'PostalAddress', addressLocality: 'Gurugram', addressRegion: 'Haryana', addressCountry: 'IN' },
+    address: [
+      { '@type': 'PostalAddress', addressLocality: 'Gurugram', addressRegion: 'Haryana', addressCountry: 'IN' },
+      { '@type': 'PostalAddress', addressLocality: 'Hyderabad', addressRegion: 'Telangana', addressCountry: 'IN' },
+    ],
     areaServed: ['India', 'International'],
     url: slugUrl('/'),
     employee: teamMembers.map((member) => ({ '@type': 'Person', name: member.name, jobTitle: member.role, sameAs: member.linkedin })),

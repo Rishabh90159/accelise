@@ -59,7 +59,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container flex flex-col gap-2 pb-24 pt-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:pb-5">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-          <p>Web development in Gurugram for businesses across India.</p>
+          <p>Web development in NCR Gurgaon and Hyderabad for businesses across India.</p>
         </div>
       </div>
     </footer>

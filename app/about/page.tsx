@@ -25,7 +25,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="section bg-white"><div className="container grid gap-6 lg:grid-cols-2"><ListBlock title="Quality and communication principles" items={['Document scope before development', 'Keep review points clear', 'Test forms, CTAs and responsive layouts before launch', 'Quote backend, payment and third-party systems separately']} /><ListBlock title="Service locations" items={['Gurgaon and Delhi NCR businesses', 'Remote projects across India', 'International clients where communication and requirements are clear']} /></div></section>
+      <section className="section bg-white"><div className="container grid gap-6 lg:grid-cols-2"><ListBlock title="Quality and communication principles" items={['Document scope before development', 'Keep review points clear', 'Test forms, CTAs and responsive layouts before launch', 'Quote backend, payment and third-party systems separately']} /><ListBlock title="Service locations" items={['Gurgaon and Delhi NCR businesses', 'Hyderabad and Telangana businesses', 'Remote projects across India', 'International clients where communication and requirements are clear']} /></div></section>
       <CTASection title="Talk to our team about your website" />
     </main>
   );

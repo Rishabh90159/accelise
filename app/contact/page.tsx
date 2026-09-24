@@ -3,7 +3,7 @@ import { ContactForm } from '@/components/contact-form';
 import { Breadcrumbs, ContactStrip, PageHero, PageVisual } from '@/components/site';
 import { siteConfig } from '@/lib/content';
 
-export const metadata: Metadata = { title: 'Contact Accelise', description: 'Call, WhatsApp or email Accelise for website development in Gurgaon, Delhi NCR and India.', alternates: { canonical: '/contact' } };
+export const metadata: Metadata = { title: 'Contact Accelise', description: 'Call, WhatsApp or email Accelise for website development in Gurgaon, Hyderabad, Delhi NCR and across India.', alternates: { canonical: '/contact' } };
 
 export default function ContactPage() {
   return (
