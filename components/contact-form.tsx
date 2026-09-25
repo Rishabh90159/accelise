@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/whatsapp-icon';
-import { services, siteConfig, whatsappUrl } from '@/lib/content';
+import { siteConfig, whatsappUrl } from '@/lib/site-config';
 
 // FormSubmit relays the enquiry to our inbox; the site is a static export with no backend of its own.
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${siteConfig.email}`;
@@ -14,9 +14,10 @@ type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 const budgets = ['₹10,000 to ₹20,000', '₹20,000 to ₹30,000', '₹30,000+', 'Not sure yet'];
 
-export function ContactForm() {
+// Service names come from the page as a prop so the full content module (and its icons) stays out of the client bundle.
+export function ContactForm({ services }: { services: string[] }) {
   const [form, setForm] = useState(initial);
-  const [serviceOptions, setServiceOptions] = useState([...services.map((service) => service.title), 'Not sure yet']);
+  const [serviceOptions, setServiceOptions] = useState([...services, 'Not sure yet']);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [status, setStatus] = useState<Status>('idle');
 

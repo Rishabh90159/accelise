@@ -2,13 +2,21 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
+/* Draws only ₹ with an installed system font. Without this, the ₹ in package prices makes the
+   browser download Inter's 84KB latin-ext file before the hero text can finish rendering on mobile. */
+@font-face {
+  font-family: 'Rupee Sign';
+  src: local('Roboto'), local('Noto Sans'), local('Segoe UI'), local('Arial'), local('Helvetica Neue');
+  unicode-range: U+20B9;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-manrope);
+  --font-sans: 'Rupee Sign', var(--font-inter);
+  --font-heading: 'Rupee Sign', var(--font-manrope);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-primary: var(--primary);
@@ -59,7 +67,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-family: 'Rupee Sign', var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
 /* Kept in the base layer so Tailwind utilities like text-white can override them. */
@@ -67,7 +75,7 @@ body {
   h1,
   h2,
   h3 {
-    font-family: var(--font-manrope), var(--font-inter), Arial, sans-serif;
+    font-family: 'Rupee Sign', var(--font-manrope), var(--font-inter), Arial, sans-serif;
     letter-spacing: 0;
   }
 

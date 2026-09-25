@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ContactForm } from '@/components/contact-form';
 import { Breadcrumbs, ContactStrip, PageHero } from '@/components/site';
-import { siteConfig } from '@/lib/content';
+import { services, siteConfig } from '@/lib/content';
 
 export const metadata: Metadata = { title: 'Contact Accelise', description: 'Call, WhatsApp or email Accelise for website development in Gurgaon, Hyderabad, Delhi NCR and across India.', alternates: { canonical: '/contact' } };
 
@@ -25,7 +25,7 @@ export default function ContactPage() {
           </div>
         }
       >
-        <ContactForm />
+        <ContactForm services={services.map((service) => service.title)} />
       </PageHero>
     </main>
   );

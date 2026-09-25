@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { navItems } from '@/lib/content';
+import { navItems } from '@/lib/site-config';
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
