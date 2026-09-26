@@ -3,18 +3,19 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Breadcrumbs, CTASection, JsonLd, PageHero, PageVisual } from '@/components/site';
 import { industries, slugUrl } from '@/lib/content';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Industry Website Development',
-  description: 'Website development for interior designers, manufacturers and exporters, event planners, photographers, diagnostic centres, modular kitchen businesses, schools and coaching institutes.',
-  alternates: { canonical: '/industries' },
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Industry-Specific Website Development | Accelise',
+  description: 'Websites for interior designers, manufacturers, exporters, event planners, photographers, diagnostic centres, modular kitchens, schools and coaching institutes.',
+  path: '/industries',
+});
 
 export default function IndustriesPage() {
   return (
     <main>
       <Breadcrumbs items={[{ label: 'Industries' }]} />
-      <PageHero eyebrow="Industries" title="Website development for your industry" text="Each industry has different buyer questions, trust signals and enquiry paths. Pick yours to see the sections, features and lead flows we recommend.">
+      <PageHero eyebrow="Industries" title="Industry-Specific Website Development" text="Each industry has different buyer questions, trust signals and enquiry paths. Pick yours to see the sections, features and lead flows we recommend.">
         <PageVisual title="Industry planning" items={['Buyer questions', 'Trust signals', 'Sections', 'Enquiry flow']} />
       </PageHero>
       <section className="section bg-white">

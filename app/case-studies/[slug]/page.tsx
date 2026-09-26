@@ -3,6 +3,12 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs, CTASection, JsonLd, ListBlock, PageHero, PageVisual } from '@/components/site';
 import { projectBySlug, projects, slugUrl } from '@/lib/content';
+import { organizationId, pageMetadata } from '@/lib/seo';
+
+// "Diagnostic Centre Website" already ends in "Website"; avoid "Website Website Case Study".
+function caseStudyTitle(name: string) {
+  return `${name.endsWith('Website') ? name : `${name} Website`} Case Study`;
+}
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -12,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = projectBySlug(slug);
   if (!project) return {};
-  return { title: `${project.name} Case Study`, description: project.solution, alternates: { canonical: `/case-studies/${project.slug}` } };
+  return pageMetadata({ title: `${caseStudyTitle(project.name)} | Accelise`, description: project.metaDescription, path: `/case-studies/${project.slug}` });
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -23,7 +29,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   return (
     <main>
       <Breadcrumbs items={[{ label: 'Portfolio', href: '/portfolio' }, { label: project.name }]} />
-      <PageHero eyebrow={`${project.industry} | ${project.projectType}`} title={`${project.name} case study`} text={project.solution}>
+      <PageHero eyebrow={`${project.industry} | ${project.projectType}`} title={caseStudyTitle(project.name)} text={project.solution}>
         <PageVisual title="Case study map" items={['Context', 'Challenge', 'Solution', 'Outcome']} />
       </PageHero>
       {project.liveUrl ? (
@@ -42,10 +48,10 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         <div className="container grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           {project.liveUrl ? (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit the ${project.name} website`} className="block self-start overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-[#8fb0ff] hover:shadow-lg">
-              <Image src={project.image} alt={`${project.name} main website screenshot`} width={900} height={540} className="h-auto w-full" />
+              <Image src={project.image} alt={project.imageAlt} width={900} height={540} className="h-auto w-full" />
             </a>
           ) : (
-            <Image src={project.image} alt={`${project.name} main website screenshot`} width={900} height={540} className="rounded-lg border border-slate-200 bg-white shadow-sm" />
+            <Image src={project.image} alt={project.imageAlt} width={900} height={540} className="rounded-lg border border-slate-200 bg-white shadow-sm" />
           )}
           <div className="grid gap-5">
             <ListBlock title="Project summary" items={[project.projectType, project.solution]} />
@@ -74,7 +80,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         ) : null}
       </section>
       <CTASection title="Create a similar website" />
-      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'CreativeWork', name: project.name, description: project.solution, url: slugUrl(`/case-studies/${project.slug}`) }} />
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'CreativeWork', name: `${project.name} website case study`, description: project.solution, url: slugUrl(`/case-studies/${project.slug}`), image: slugUrl(project.image), creator: { '@id': organizationId }, ...(project.liveUrl ? { about: { '@type': 'WebSite', name: project.name, url: project.liveUrl } } : {}) }} />
     </main>
   );
 }

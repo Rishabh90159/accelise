@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page('/process', 0.6),
     page('/team', 0.6),
     page('/contact', 0.7),
+    page('/web-development-company-gurgaon', 0.9),
     ...services.map((service) => page(`/services/${service.slug}`, 0.9)),
     ...industries.map((industry) => page(`/industries/${industry.slug}`, 0.8)),
     ...projects.map((project) => page(`/case-studies/${project.slug}`, 0.6)),

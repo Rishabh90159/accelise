@@ -2,8 +2,13 @@ import type { Metadata } from 'next';
 import { CheckCircle2 } from 'lucide-react';
 import { Breadcrumbs, ButtonLink, CTASection, PageHero, PageVisual } from '@/components/site';
 import { packages } from '@/lib/content';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = { title: 'Website Packages and Pricing', description: 'Starter, Business and Premium Catalogue website packages with clear inclusions and quotation notes.', alternates: { canonical: '/packages' } };
+export const metadata: Metadata = pageMetadata({
+  title: 'Website Development Packages & Pricing | Accelise',
+  description: 'Website packages from ₹10,000: Starter, Business and Premium Catalogue websites with domain and hosting included, clear inclusions, timelines and revision rounds.',
+  path: '/packages',
+});
 
 export default function PackagesPage() {
   return (

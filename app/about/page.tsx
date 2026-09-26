@@ -1,8 +1,14 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs, CTASection, ListBlock, PageHero, PageVisual, SectionHeading } from '@/components/site';
+import Link from 'next/link';
 import { values } from '@/lib/content';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = { title: 'About Accelise', description: 'Learn about the Accelise team, services, approach and service coverage.', alternates: { canonical: '/about' } };
+export const metadata: Metadata = pageMetadata({
+  title: 'About Accelise | Web Development Team in Gurugram',
+  description: 'Accelise is a web development team in Gurugram and Hyderabad building business websites, product catalogues and web applications for businesses across India.',
+  path: '/about',
+});
 
 export default function AboutPage() {
   return (
@@ -25,7 +31,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="section bg-white"><div className="container grid gap-6 lg:grid-cols-2"><ListBlock title="Quality and communication principles" items={['Document scope before development', 'Keep review points clear', 'Test forms, CTAs and responsive layouts before launch', 'Quote backend, payment and third-party systems separately']} /><ListBlock title="Service locations" items={['Gurgaon and Delhi NCR businesses', 'Hyderabad and Telangana businesses', 'Remote projects across India', 'International clients where communication and requirements are clear']} /></div></section>
+      <section className="section bg-white"><div className="container grid gap-6 lg:grid-cols-2"><ListBlock title="Quality and communication principles" items={['Document scope before development', 'Keep review points clear', 'Test forms, CTAs and responsive layouts before launch', 'Quote backend, payment and third-party systems separately']} /><ListBlock title="Service locations" items={['Gurgaon and Delhi NCR businesses', 'Hyderabad and Telangana businesses', 'Remote projects across India', 'International clients where communication and requirements are clear']} /></div><p className="container mt-6 text-sm text-slate-600">Based in NCR? Read about our <Link href="/web-development-company-gurgaon" className="font-bold text-[#315eef] hover:underline">web development services in Gurgaon</Link> or browse our <Link href="/services" className="font-bold text-[#315eef] hover:underline">full list of services</Link>.</p></section>
       <CTASection title="Talk to our team about your website" />
     </main>
   );

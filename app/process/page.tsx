@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs, CTASection, ListBlock, PageHero, PageVisual } from '@/components/site';
 import { processSteps } from '@/lib/content';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = { title: 'Website Development Process', description: 'A clear workflow from requirement discussion to launch and post-launch support.', alternates: { canonical: '/process' } };
+export const metadata: Metadata = pageMetadata({
+  title: 'Website Development Process | Accelise',
+  description: 'How Accelise builds websites: requirement discussion, written scope, content planning, development, revisions, testing, launch and post-launch support.',
+  path: '/process',
+});
 
 export default function ProcessPage() {
   return (

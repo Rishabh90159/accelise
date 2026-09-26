@@ -1,12 +1,21 @@
-import { CheckCircle2 } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { CheckCircle2, MapPin } from 'lucide-react';
 import { AgencyVisual, ButtonLink, CTASection, FAQSection, JsonLd, PageHero, ProjectCards, SectionHeading, ServiceCards, TeamPreview } from '@/components/site';
-import { categoriesServed, faqs, packages, processSteps, slugUrl } from '@/lib/content';
+import { categoriesServed, faqs, industries, packages, processSteps } from '@/lib/content';
+import { faqSchema, pageMetadata, webPageSchema } from '@/lib/seo';
+
+const title = 'Web Development Company in India | Accelise';
+const description = 'Accelise is a web development company in India building business websites, e-commerce platforms, B2B catalogue websites and custom web applications.';
+
+export const metadata: Metadata = pageMetadata({ title, description, path: '/' });
 
 export default function HomePage() {
   return (
     <main>
-      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: slugUrl('/') }] }} />
-      <PageHero eyebrow="Bringing Businesses To The Digital World" title="Take Your Business Online, Reach More Customers, Grow Faster" text="We build professional business websites, web applications, e-commerce platforms and B2B catalogue websites for businesses across India.">
+      <JsonLd data={webPageSchema({ name: title, description, path: '/' })} />
+      <JsonLd data={faqSchema(faqs)} />
+      <PageHero eyebrow="Bringing Businesses To The Digital World" title="Web Development Company in India for Business Websites & Web Applications" text="Accelise designs and builds business websites, e-commerce stores, B2B catalogue websites and custom web applications for companies in Gurgaon, Delhi NCR and across India, with a clear scope, fast mobile pages and enquiry paths built in.">
         <AgencyVisual />
       </PageHero>
       <section className="border-b border-slate-200 bg-white py-8">
@@ -20,12 +29,28 @@ export default function HomePage() {
           <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-6">
             {categoriesServed.map((category) => { const Icon = category.icon; return <div className="rounded-lg border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={category.label}><Icon className="mx-auto h-7 w-7 text-[#315eef]" /><p className="mt-3 text-sm font-bold text-[#0b1b3a]">{category.label}</p></div>; })}
           </div>
+          <div className="mt-8 text-center">
+            <h3 className="text-sm font-extrabold uppercase tracking-[0.12em] text-slate-500">Industry-specific websites</h3>
+            <ul className="mt-4 flex flex-wrap justify-center gap-2">
+              {industries.map((industry) => <li key={industry.slug}><Link href={`/industries/${industry.slug}`} className="inline-block rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-[#0b1b3a] transition hover:border-[#315eef] hover:text-[#315eef]">{industry.shortTitle}</Link></li>)}
+            </ul>
+          </div>
         </div>
       </section>
-      <section className="section bg-white"><div className="container"><SectionHeading eyebrow="Services" title="Web development services with practical business value" /><ServiceCards limit={4} /><div className="mt-8 text-center"><ButtonLink href="/services" variant="secondary">Explore all services</ButtonLink></div></div></section>
+      <section className="section bg-white"><div className="container"><SectionHeading eyebrow="Services" title="Website and web application development services" text="From a five-page business website to a product catalogue or a custom portal, each project is scoped around what your customers need to see before they contact you." /><ServiceCards limit={4} /><p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-6 text-slate-600">Already have a website that is slow or out of date? See our <Link href="/services/website-redesign" className="font-bold text-[#315eef] hover:underline">website redesign service</Link>.</p><div className="mt-6 text-center"><ButtonLink href="/services" variant="secondary">Explore all services</ButtonLink></div></div></section>
+      <section className="border-y border-slate-200 bg-[#f4f7fd] py-10">
+        <div className="container grid gap-6 lg:grid-cols-[auto_1fr_auto] lg:items-center">
+          <span className="grid h-12 w-12 place-items-center rounded-md bg-[#315eef] text-white"><MapPin className="h-6 w-6" /></span>
+          <div>
+            <h2 className="text-2xl font-extrabold text-[#0b1b3a]">Based in Gurugram, working with businesses across India</h2>
+            <p className="mt-2 max-w-3xl leading-7 text-slate-600">Our team works from Gurugram and Hyderabad. Businesses in Gurgaon and Delhi NCR can read about our <Link href="/web-development-company-gurgaon" className="font-bold text-[#315eef] hover:underline">web development company in Gurgaon</Link> page; projects elsewhere in India run the same way, over calls, WhatsApp and shared review links.</p>
+          </div>
+          <ButtonLink href="/contact" cta="home-location-contact">Discuss Your Website</ButtonLink>
+        </div>
+      </section>
       <section className="section">
         <div className="container grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <SectionHeading eyebrow="Why choose us" title="A focused team for complete website delivery" text="Our specialists combine planning, frontend development, backend thinking, quality assurance and launch communication around one clear project scope." />
+          <SectionHeading eyebrow="Why choose us" title="A focused web development team for complete delivery" text="Our specialists combine planning, frontend development, backend thinking, quality assurance and launch communication around one clear project scope." />
           <div className="grid gap-4 md:grid-cols-2">
             {[
               ['Clear scope and project communication', 'We define pages, features, responsibilities, timelines and review points before development begins.'],
@@ -37,7 +62,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className="section bg-white"><div className="container"><SectionHeading eyebrow="Team" title="Frontend, backend and QA working together" text="Meet the project-delivery team behind planning, implementation, testing and launch support." /><TeamPreview /><div className="mt-8 text-center"><ButtonLink href="/team" variant="secondary">Meet the full team</ButtonLink></div></div></section>
-      <section className="section"><div className="container"><SectionHeading eyebrow="Portfolio" title="Selected website projects and concepts" text="Completed client work and demo concepts, each with a case study covering the challenge, solution and technology used." /><ProjectCards limit={4} /></div></section>
+      <section className="section"><div className="container"><SectionHeading eyebrow="Portfolio" title="Selected website projects and concepts" text="Completed client work and demo concepts, each with a case study covering the challenge, solution and technology used." /><ProjectCards limit={4} /><div className="mt-8 text-center"><ButtonLink href="/portfolio" variant="secondary">View the full portfolio</ButtonLink></div></div></section>
       <section className="section bg-white"><div className="container"><SectionHeading eyebrow="Process" title="Our development process from scope to launch" /><div className="grid gap-4 md:grid-cols-4">{processSteps.map((step, index) => <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={step.title}><span className="text-sm font-extrabold text-[#315eef]">{String(index + 1).padStart(2, '0')}</span><h3 className="mt-2 font-extrabold text-[#0b1b3a]">{step.title}</h3></div>)}</div></div></section>
       <section className="section"><div className="container"><SectionHeading eyebrow="Packages" title="Starting points for common website needs" /><div className="grid gap-5 lg:grid-cols-3">{packages.map((pkg) => <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={pkg.name}><h3 className="text-xl font-extrabold text-[#0b1b3a]">{pkg.name}</h3><p className="mt-2 text-2xl font-extrabold text-[#315eef]">{pkg.price}</p><p className="mt-2 text-sm text-slate-600">{pkg.fit}</p><ul className="mt-5 grid gap-2 text-sm text-slate-700">{pkg.features.slice(0, 5).map((feature) => <li className="flex gap-2" key={feature}><CheckCircle2 className="h-4 w-4 text-[#315eef]" /> {feature}</li>)}</ul></div>)}</div><div className="mt-8 text-center"><ButtonLink href="/packages">Compare packages</ButtonLink></div></div></section>
       <section className="section bg-white"><div className="container"><SectionHeading eyebrow="Expectations" title="What clients can expect" text="A practical delivery experience built around communication, documented scope, responsive design and pre-launch testing." /><div className="grid gap-5 md:grid-cols-4">{['Clear communication during planning and reviews', 'Documented scope with inclusions and exclusions', 'Responsive pages built for real users', 'Pre-launch checks for forms, links and CTAs'].map((item) => <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={item}><CheckCircle2 className="h-6 w-6 text-[#315eef]" /><p className="mt-4 font-bold text-[#0b1b3a]">{item}</p></div>)}</div></div></section>

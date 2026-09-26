@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, ChevronRight, Mail, MapPin, Phone } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/whatsapp-icon';
 import { MobileMenu } from '@/components/mobile-menu';
-import { faqs, industries, navItems, projects, services, siteConfig, teamMembers, whatsappUrl, consultationMessage, type FAQ } from '@/lib/content';
+import { faqs, industries, navItems, projects, services, siteConfig, slugUrl, teamMembers, whatsappUrl, consultationMessage, type FAQ } from '@/lib/content';
 
 export function Header() {
   return (
@@ -52,14 +52,14 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <FooterLinks title="Services" links={services.slice(0, 5).map((service) => [service.shortTitle, `/services/${service.slug}`])} />
-        <FooterLinks title="Industries" className="col-span-2 lg:col-span-1" listClassName="grid-cols-2 lg:grid-cols-1" links={industries.map((industry) => [industry.title.replace('Website Development for ', ''), `/industries/${industry.slug}`])} />
+        <FooterLinks title="Services" links={[...services.slice(0, 5).map((service) => [service.shortTitle, `/services/${service.slug}`]), ['Gurgaon Web Development', '/web-development-company-gurgaon']]} />
+        <FooterLinks title="Industries" className="col-span-2 lg:col-span-1" listClassName="grid-cols-2 lg:grid-cols-1" links={industries.map((industry) => [industry.shortTitle, `/industries/${industry.slug}`])} />
         <FooterLinks title="Company" className="col-start-2 row-start-2 lg:col-start-auto lg:row-start-auto" links={[['About', '/about'], ['Team', '/team'], ['Process', '/process'], ['Portfolio', '/portfolio'], ['Packages', '/packages'], ['Contact', '/contact']]} />
       </div>
       <div className="border-t border-white/10">
         <div className="container flex flex-col gap-2 pb-24 pt-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:pb-5">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-          <p>Web development in NCR Gurgaon and Hyderabad for businesses across India.</p>
+          <p>Web development in <Link href="/web-development-company-gurgaon" className="underline-offset-2 hover:text-white hover:underline">Gurgaon (Gurugram)</Link> and Hyderabad for businesses across India.</p>
         </div>
       </div>
     </footer>
@@ -241,9 +241,17 @@ export function TeamPreview() {
   );
 }
 
+// Also emits the matching BreadcrumbList schema, so every page with visible breadcrumbs gets structured data for free.
 export function Breadcrumbs({ items }: { items: { label: string; href?: string }[] }) {
+  const trail = [{ label: 'Home', href: '/' }, ...items];
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.label, ...(item.href ? { item: slugUrl(item.href) } : {}) })),
+  };
   return (
     <nav className="container py-4 text-sm text-slate-600" aria-label="Breadcrumb">
+      <JsonLd data={schema} />
       <ol className="flex flex-wrap items-center gap-2">
         <li><Link href="/">Home</Link></li>
         {items.map((item) => (
@@ -257,11 +265,11 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
   );
 }
 
-export function FAQSection({ items = faqs }: { items?: FAQ[] }) {
+export function FAQSection({ items = faqs, title = 'Helpful answers before we talk' }: { items?: FAQ[]; title?: string }) {
   return (
     <section className="section bg-white">
       <div className="container">
-        <SectionHeading eyebrow="Questions" title="Helpful answers before we talk" />
+        <SectionHeading eyebrow="Questions" title={title} />
         <div className="mx-auto grid max-w-4xl gap-4">
           {items.map((item) => (
             <details key={item.question} className="rounded-lg border border-slate-200 bg-slate-50 p-5 transition hover:border-[#8fb0ff] hover:shadow-md">
@@ -315,16 +323,17 @@ export function ServiceCards({ limit }: { limit?: number }) {
 
 export function ProjectCards({ limit }: { limit?: number }) {
   const visible = typeof limit === 'number' ? projects.slice(0, limit) : projects;
+  const serviceFor = (slug: string) => services.find((service) => service.slug === slug);
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {visible.map((project) => (
         <article key={project.slug} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md">
           {project.liveUrl ? (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit the ${project.name} website`} className="block overflow-hidden">
-              <Image src={project.image} alt={`${project.name} website screenshot`} width={720} height={420} className="h-56 w-full object-cover object-top transition duration-300 hover:scale-105" />
+              <Image src={project.image} alt={project.imageAlt} width={720} height={420} className="h-56 w-full object-cover object-top transition duration-300 hover:scale-105" />
             </a>
           ) : (
-            <Image src={project.image} alt={`${project.name} website screenshot`} width={720} height={420} className="h-56 w-full object-cover" />
+            <Image src={project.image} alt={project.imageAlt} width={720} height={420} className="h-56 w-full object-cover" />
           )}
           <div className="p-6">
             <p className="text-sm font-bold text-[#315eef]">{project.industry}</p>
@@ -333,8 +342,12 @@ export function ProjectCards({ limit }: { limit?: number }) {
             <p className="mt-3 text-sm leading-6 text-slate-600"><strong>Challenge:</strong> {project.problem}</p>
             <p className="mt-2 text-sm leading-6 text-slate-600"><strong>Work completed:</strong> {project.solution}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.features.slice(0, 3).map((feature) => <span key={feature} className="rounded bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">{feature}</span>)}</div>
-            {project.liveUrl ? (
-              <div className="mt-5 text-sm font-bold">
+            <p className="mt-4 text-xs leading-5 text-slate-500"><strong className="text-slate-700">Built with:</strong> {project.technology.join(', ')}{serviceFor(project.service) ? <> · <Link href={`/services/${project.service}`} className="font-semibold text-[#315eef] hover:underline">{serviceFor(project.service)?.title}</Link></> : null}</p>
+            <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+              <Link href={`/case-studies/${project.slug}`} className="inline-flex items-center gap-1 rounded-md bg-[#315eef] px-3 py-1.5 text-white transition hover:bg-[#244bd4]">
+                Read case study<span className="sr-only">: {project.name}</span>
+              </Link>
+              {project.liveUrl ? (
                 <a
                   href={project.liveUrl}
                   target="_blank"
@@ -343,12 +356,32 @@ export function ProjectCards({ limit }: { limit?: number }) {
                 >
                   View Website
                 </a>
-              </div>
-            ) : null}
+              ) : null}
+            </div>
           </div>
         </article>
       ))}
     </div>
+  );
+}
+
+// Card grid of internal links; each item supplies its own descriptive anchor text.
+export function RelatedLinks({ eyebrow, title, text, links, className = 'bg-white' }: { eyebrow?: string; title: string; text?: string; links: { href: string; label: string; text: string }[]; className?: string }) {
+  return (
+    <section className={`section ${className}`}>
+      <div className="container">
+        <SectionHeading eyebrow={eyebrow} title={title} text={text} />
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {links.map((link) => (
+            <Link href={link.href} key={link.href} className="group rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-[#8fb0ff] hover:shadow-lg">
+              <h3 className="text-lg font-extrabold text-[#0b1b3a]">{link.label}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{link.text}</p>
+              <span className="mt-4 inline-flex items-center text-sm font-bold text-[#315eef]">Learn more <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" /></span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 

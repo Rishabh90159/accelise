@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { ExternalLink, GraduationCap } from 'lucide-react';
 import { Breadcrumbs, CTASection, JsonLd, PageHero, PageVisual, SectionHeading, TeamPortrait } from '@/components/site';
 import { siteConfig, slugUrl, teamMembers } from '@/lib/content';
+import { organizationId, pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Team',
-  description:
-    'Meet the Accelise team: full-stack project leadership, backend development, frontend development and quality assurance.',
-  alternates: { canonical: '/team' },
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Our Web Development Team | Accelise',
+  description: 'Meet the Accelise team behind every project: full stack project leadership, software engineering, backend and frontend development, and quality assurance.',
+  path: '/team',
+});
 
 export default function TeamPage() {
   return (
@@ -85,6 +85,7 @@ export default function TeamPage() {
           url: slugUrl('/team'),
           mainEntity: {
             '@type': 'Organization',
+            '@id': organizationId,
             name: siteConfig.name,
             employee: teamMembers.map((member) => ({
               '@type': 'Person',

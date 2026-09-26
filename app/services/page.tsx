@@ -1,18 +1,19 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs, ButtonLink, CTASection, JsonLd, ListBlock, PageHero, PageVisual, SectionHeading, ServiceCards } from '@/components/site';
 import { services, slugUrl } from '@/lib/content';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Web Development Services',
-  description: 'Business websites, B2B catalogue websites, portfolio websites, ecommerce planning, redesign, landing pages, maintenance and custom web applications.',
-  alternates: { canonical: '/services' },
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Website & Web Application Development Services | Accelise',
+  description: 'Web development services from Accelise: business websites, e-commerce stores, B2B catalogues, custom web applications, redesigns, landing pages and maintenance.',
+  path: '/services',
+});
 
 export default function ServicesPage() {
   return (
     <main>
       <Breadcrumbs items={[{ label: 'Services' }]} />
-      <PageHero eyebrow="Services" title="Website development services for business enquiries" text="Choose a focused website type, or use the consultation to clarify what your buyers need before deciding the final scope.">
+      <PageHero eyebrow="Services" title="Website and Web Application Development Services" text="Choose a focused website type, or use the consultation to clarify what your buyers need before deciding the final scope. We work with businesses in Gurgaon, Delhi NCR and across India.">
         <PageVisual title="Service planning" items={['Business goal', 'Website type', 'Enquiry path', 'Scope']} />
       </PageHero>
       <section className="section bg-white"><div className="container"><ServiceCards /></div></section>
@@ -21,7 +22,7 @@ export default function ServicesPage() {
           {services.map((service) => (
             <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#8fb0ff] hover:shadow-md" key={service.slug}>
               <h2 className="text-2xl font-extrabold text-[#0b1b3a]">{service.title}</h2>
-              <p className="mt-3 leading-7 text-slate-600">{service.problem}</p>
+              <p className="mt-3 leading-7 text-slate-600">{service.problems[0]}</p>
               <p className="mt-3 text-sm font-bold text-slate-700">Suitable for: {service.suitableFor}</p>
               <div className="mt-5"><ListBlock title="Important features" items={service.features} /></div>
               <div className="mt-5"><ButtonLink href={`/services/${service.slug}`} cta={`service-${service.slug}`}>View details</ButtonLink></div>

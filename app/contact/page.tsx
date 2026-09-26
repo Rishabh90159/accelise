@@ -2,8 +2,14 @@ import type { Metadata } from 'next';
 import { ContactForm } from '@/components/contact-form';
 import { Breadcrumbs, ContactStrip, PageHero } from '@/components/site';
 import { services, siteConfig } from '@/lib/content';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = { title: 'Contact Accelise', description: 'Call, WhatsApp or email Accelise for website development in Gurgaon, Hyderabad, Delhi NCR and across India.', alternates: { canonical: '/contact' } };
+// Canonical stays on the clean URL so /contact?package=... links from the packages page are not treated as separate pages.
+export const metadata: Metadata = pageMetadata({
+  title: 'Contact Accelise | Request a Website Quote',
+  description: 'Call, WhatsApp or email Accelise to discuss a website or web application. Web development for businesses in Gurgaon, Delhi NCR, Hyderabad and across India.',
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (
