@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs, CTASection, FAQSection, JsonLd, ListBlock, PageHero, PageVisual, RelatedLinks } from '@/components/site';
 import { industries, industryBySlug, projectBySlug, serviceBySlug } from '@/lib/content';
-import { faqSchema, pageMetadata, serviceSchema } from '@/lib/seo';
+import { faqSchema, pageMetadata, serviceSchema, webPageSchema } from '@/lib/seo';
 
 export function generateStaticParams() {
   return industries.map((industry) => ({ slug: industry.slug }));
@@ -60,6 +60,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       />
       <FAQSection items={industry.faqs} title={`${industry.shortTitle} websites: common questions`} />
       <CTASection title="Plan your industry website with Accelise" text="Tell us about your business, the enquiries you want and any pages you already have. We will suggest a practical structure and send a clear quote." />
+      <JsonLd data={webPageSchema({ name: industry.seoTitle, description: industry.metaDescription, path: `/industries/${industry.slug}` })} />
       <JsonLd data={serviceSchema({ name: industry.title, description: industry.metaDescription, path: `/industries/${industry.slug}`, serviceType: 'Website development' })} />
       <JsonLd data={faqSchema(industry.faqs)} />
     </main>

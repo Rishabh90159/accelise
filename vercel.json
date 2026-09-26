@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "accelise.com" }], "destination": "https://www.accelise.com/$1", "statusCode": 301 },
     { "source": "/services/e-commerce-development", "destination": "/services/ecommerce-website-development/", "statusCode": 301 },
     { "source": "/services/e-commerce-development/", "destination": "/services/ecommerce-website-development/", "statusCode": 301 },
     { "source": "/services/b2b-product-catalogue-websites", "destination": "/services/b2b-website-development/", "statusCode": 301 },

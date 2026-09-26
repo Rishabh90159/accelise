@@ -59,7 +59,7 @@ export default function GurgaonPage() {
       <RelatedLinks
         eyebrow="Services"
         title="Web development services in Gurgaon"
-        text="Gurgaon's businesses range from corporate offices and consultancies to manufacturers, clinics, schools, interior studios and retail brands. The right website differs for each, so we start with what your customers need to see and then choose the type of site."
+        text="Gurgaon's businesses range from corporate offices and consultancies to manufacturers, clinics, schools, interior studios and retail brands. The right website differs for each, so we start with what your customers need to see and then choose the type of site. Whether you are looking for a website design company or a full web development agency, design, development, launch and support stay with one team."
         links={gurgaonServices}
       />
 

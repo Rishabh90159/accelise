@@ -11,6 +11,9 @@ export function slugUrl(path: string) {
 export const organizationId = `${siteConfig.baseUrl}/#organization`;
 export const websiteId = `${siteConfig.baseUrl}/#website`;
 
+// Default social preview (1200x630). Absolute URL so crawlers never have to resolve it.
+export const ogImage = { url: `${siteConfig.baseUrl}/images/accelise-web-development-og.png`, width: 1200, height: 630, alt: 'Accelise – web development company in Gurgaon and India' };
+
 // Every indexable page builds its metadata here so title, description, canonical and Open Graph always describe the same URL.
 // Titles are passed in full (no layout template) so each one can be tuned to its own length.
 export function pageMetadata({ title, description, path }: { title: string; description: string; path: string }): Metadata {
@@ -20,8 +23,8 @@ export function pageMetadata({ title, description, path }: { title: string; desc
     description,
     alternates: { canonical: url },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
-    openGraph: { title, description, url, siteName: siteConfig.name, type: 'website', locale: 'en_IN' },
-    twitter: { card: 'summary', title, description },
+    openGraph: { title, description, url, siteName: siteConfig.name, type: 'website', locale: 'en_IN', images: [ogImage] },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImage.url] },
   };
 }
 

@@ -3,7 +3,7 @@ import { Inter, Manrope } from 'next/font/google';
 import './globals.css';
 import { JsonLd, LayoutShell } from '@/components/site';
 import { siteConfig, slugUrl, teamMembers } from '@/lib/content';
-import { organizationId, websiteId } from '@/lib/seo';
+import { ogImage, organizationId, websiteId } from '@/lib/seo';
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] });
 const manrope = Manrope({ variable: '--font-manrope', subsets: ['latin'] });
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: { default: 'Web Development Company in India | Accelise', template: '%s | Accelise' },
   description: 'Accelise is a web development company in India building business websites, e-commerce platforms, B2B catalogue websites and custom web applications.',
   applicationName: siteConfig.name,
-  openGraph: { siteName: siteConfig.name, type: 'website', locale: 'en_IN' },
+  openGraph: { siteName: siteConfig.name, type: 'website', locale: 'en_IN', images: [ogImage] },
   formatDetection: { telephone: false },
 };
 

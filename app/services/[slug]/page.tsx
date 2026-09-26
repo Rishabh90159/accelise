@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs, CTASection, FAQSection, JsonLd, ListBlock, PageHero, PageVisual, ProjectCards, RelatedLinks } from '@/components/site';
 import { industryBySlug, serviceBySlug, services } from '@/lib/content';
-import { faqSchema, pageMetadata, serviceSchema } from '@/lib/seo';
+import { faqSchema, pageMetadata, serviceSchema, webPageSchema } from '@/lib/seo';
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -64,6 +64,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         links={otherServices.map((item) => ({ href: `/services/${item.slug}`, label: item.title, text: item.summary }))}
       />
       <CTASection title={`Talk to Accelise about ${service.title.toLowerCase().replace('b2b', 'B2B')}`} text="Share your business type, pages, features and timeline to receive a practical consultation before the final quote." />
+      <JsonLd data={webPageSchema({ name: service.seoTitle, description: service.metaDescription, path })} />
       <JsonLd data={serviceSchema({ name: service.title, description: service.metaDescription, path, serviceType: service.title })} />
       <JsonLd data={faqSchema(service.faqs)} />
     </main>
